@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Inscription_course" Height="720" Width="1280">
     <Grid>
-        <Grid Height="704" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70*" />
                 <RowDefinition Height="85*" />
@@ -41,40 +40,26 @@
                     <ImageBrush ImageSource="/Image/logo BEAUNE.jpg" />
                 </Rectangle.Fill>
             </Rectangle>
-            <WrapPanel Grid.Row="1">
-                <Button
+        <WrapPanel Grid.Row="1">
+            <Button
                     Grid.Row="1"
                     Width="30"
                     Height="30"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Image/Logo_home.jpg" />
-                    </Button.Background>
-                </Button>
-                <Button Content="Inscription course" Height="20"/>
-                <Button
+                <Button.Background>
+                    <ImageBrush ImageSource="/Image/Logo_home.jpg" />
+                </Button.Background>
+            </Button>
+            <Button Content="Inscription course" Height="20"/>
+            <Button
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Content="Visualiser course" />
-                <Button Content="Visualiser coureur" Height="20"/>
-                <Button Content="Se connecter" Height="20"/>
-            </WrapPanel>
-            <Button
-                x:Name="Butinscrire"
-                Grid.Row="2"
-                Width="130"
-                Height="50"
-                Margin="0,260,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Background="#00000000"
-                BorderBrush="White"
-                Content="S'inscrire"
-                FontSize="24"
-                Foreground="White"/>
-        </Grid>
+            <Button Content="Visualiser coureur" Height="20"/>
+            <Button Content="Se connecter" Height="20"/>
+        </WrapPanel>
     </Grid>
 </Window>
