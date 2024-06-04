@@ -64,5 +64,40 @@
             <Button Height="20" Content="Visualiser coureur" />
             <Button Height="20" Content="Se connecter" />
         </WrapPanel>
+        <TextBox
+            x:Name="TBrechercheCourse"
+            Grid.Row="2"
+            Width="147"
+            Margin="18,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="Rechercher une course"
+            TextWrapping="Wrap" />
+        <DataGrid
+            Grid.Row="2"
+            Width="1262"
+            Height="516"
+            Margin="18,33,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding course}">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn
+                    Width="80"
+                    Binding="{Binding num_course}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="80"
+                    Binding="{Binding distance}"
+                    Header="Prenom" />
+                <DataGridTextColumn
+                    Width="80"
+                    Binding="{Binding prix_inscription}"
+                    Header="Telephone" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

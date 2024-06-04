@@ -61,7 +61,7 @@
                 Grid.Row="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Content="Visualiser course" />
+                Content="Visualiser course" Click="Button_Click" />
             <Button Content="Visualiser coureur" Height="20"/>
             <Button Content="Se connecter" Height="20"/>
         </WrapPanel>
