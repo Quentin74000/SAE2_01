@@ -8,11 +8,15 @@
     Title="Visualiser_Course"
     Width="1280"
     Height="720"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ApplicationData x:Name="data" />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*" />
-            <RowDefinition Height="85*" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="549*" />
         </Grid.RowDefinitions>
         <Image
@@ -32,12 +36,11 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-
         <Rectangle
             Width="216"
             Height="70"
-            Margin="1052,0,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,0,12,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Image/logo BEAUNE.jpg" />
@@ -82,21 +85,24 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             IsReadOnly="True"
-            ItemsSource="{Binding course}">
+            ItemsSource="{Binding LesCourses}">
             <DataGrid.Columns>
-
                 <DataGridTextColumn
-                    Width="80"
-                    Binding="{Binding num_course}"
-                    Header="Nom" />
+                    Width="auto"
+                    Binding="{Binding Num_course}"
+                    Header="Numéro de la course" />
                 <DataGridTextColumn
-                    Width="80"
-                    Binding="{Binding distance}"
-                    Header="Prenom" />
+                    Width="auto"
+                    Binding="{Binding Distance}"
+                    Header="Distance" />
                 <DataGridTextColumn
-                    Width="80"
-                    Binding="{Binding prix_inscription}"
-                    Header="Telephone" />
+                    Width="auto"
+                    Binding="{Binding Heure_depart}"
+                    Header="Heure de départ" />
+                <DataGridTextColumn
+                    Width="auto"
+                    Binding="{Binding Prix_inscription}"
+                    Header="Prix de l'inscription" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
