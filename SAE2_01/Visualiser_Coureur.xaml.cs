@@ -10,40 +10,39 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SAE2_01
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour Visualiser_Course.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Visualiser_Coureur : Window
     {
-        public MainWindow()
+        public Visualiser_Coureur()
         {
             InitializeComponent();
         }
 
-        private void But_Visualiser_Course_Click(object sender, RoutedEventArgs e)
+        private void But_Home_Click(object sender, RoutedEventArgs e)
         {
-            Visualiser_Course visualiser = new Visualiser_Course();
+            MainWindow mainwindow = new MainWindow();
             this.Hide();
-            visualiser.ShowDialog();
+            mainwindow.ShowDialog();
         }
 
-        private void But_inscrire_Click(object sender, RoutedEventArgs e)
+        private void But_Inscription_Course_Click(object sender, RoutedEventArgs e)
         {
             Inscription_course inscription = new Inscription_course();
             this.Hide();
             inscription.ShowDialog();
         }
 
-        private void But_Visualier_Coureur_Click(object sender, RoutedEventArgs e)
+        private void But_Visualiser_Course_Click(object sender, RoutedEventArgs e)
         {
-            Visualiser_Coureur visualiser_coureur = new Visualiser_Coureur();
+            Visualiser_Course visualiser_course = new Visualiser_Course();
             this.Hide();
-            visualiser_coureur.ShowDialog();
+            visualiser_course.ShowDialog();
         }
     }
 }

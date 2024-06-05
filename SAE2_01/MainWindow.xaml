@@ -15,9 +15,8 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="549*" />
+            <RowDefinition />
+            <RowDefinition Height="590.04" />
         </Grid.RowDefinitions>
         <Image
             x:Name="Logo_semi_marathon"
@@ -42,76 +41,166 @@
             x:Name="Logo_Beaune"
             Width="216"
             Height="70"
-            Margin="0,0,12,0"
-            HorizontalAlignment="Right"
+            Margin="1052,0,0,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Image/logo BEAUNE.jpg" />
             </Rectangle.Fill>
         </Rectangle>
-        <WrapPanel Grid.Row="1">
-            <Button
-                x:Name="But_Home"
-                Grid.Row="1"
-                Width="30"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content="">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Image/Logo_home.jpg" />
-                </Button.Background>
-            </Button>
-            <Button
-                x:Name="But_Inscription_Course"
-                Height="20"
-                Click="But_inscrire_Click"
-                Content="Inscription course" />
-            <Button
-                x:Name="But_Visualiser_Course"
-                Grid.Row="1"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Click="But_Visualiser_Course_Click"
-                Content="Visualiser course" />
-            <Button
-                x:Name="But_Visualier_Coureur"
-                Height="20"
-                Content="Visualiser coureur" />
-            <Button
-                x:Name="But_Se_Connecter"
-                Height="20"
-                Content="Se connecter" />
-        </WrapPanel>
-        <Rectangle
-            Grid.Row="2"
-            Fill="#FFBC134F"
-            Stroke="Black" />
         <Label
-            x:Name="Lab_Participez_Meilleur_Marathon"
-            Grid.Row="2"
-            Width="804"
-            Height="63"
-            Margin="0,197,0,0"
+            x:Name="Lab_Accueil"
+            Width="154"
+            Height="58"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Content="Participez au meilleur Marathon de Bourgogne"
+            VerticalAlignment="Center"
+            Content="ACCUEIL"
             FontSize="36"
-            FontWeight="Bold"
-            Foreground="White" />
-        <Button
-            x:Name="But_Inscrire"
-            Grid.Row="2"
-            Width="130"
-            Height="50"
-            Margin="0,260,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Background="#00000000"
-            BorderBrush="White"
-            Click="But_inscrire_Click"
-            Content="S'inscrire"
-            FontSize="24"
-            Foreground="White" />
+            FontWeight="Bold" />
+        <TabControl Grid.Row="1">
+            <TabItem x:Name="Tab_Accueil" Header="Accueil">
+                <Grid Background="#FFBC134F">
+
+                    <Label
+                        x:Name="Lab_Participez_Meilleur_Marathon"
+                        Grid.Row="1"
+                        Width="804"
+                        Height="63"
+                        Margin="0,227,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Content="Participez au meilleur Marathon de Bourgogne"
+                        FontSize="36"
+                        FontWeight="Bold"
+                        Foreground="White" />
+                    <Button
+                        x:Name="But_Inscrire"
+                        Width="130"
+                        Height="50"
+                        Margin="0,290,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Background="#00000000"
+                        BorderBrush="White"
+                        Click="But_inscrire_Click"
+                        Content="S'inscrire"
+                        FontSize="24"
+                        Foreground="White" />
+
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Tab_Incription" Header="Inscription">
+                <Grid Background="#FFBC134F">
+                    <StackPanel Height="75" Orientation="Horizontal">
+                        <Label
+                            x:Name="Lab_Liste_des_courses"
+                            Width="310"
+                            Height="60"
+                            Margin="25,-500,0,0"
+                            Content="Liste des courses"
+                            FontSize="36"
+                            FontWeight="Bold"
+                            Foreground="White" />
+                        <Label
+                            x:Name="Lab_Liste_des_coureurs"
+                            Width="310"
+                            Height="60"
+                            Margin="315,-500,0,0"
+                            Content="Liste des coureurs"
+                            FontSize="36"
+                            FontWeight="Bold"
+                            Foreground="White" />
+                    </StackPanel>
+                    <StackPanel
+                        Width="1288"
+                        Height="460"
+                        Orientation="Horizontal">
+                        <DataGrid
+                            x:Name="Data_Course"
+                            Grid.Row="2"
+                            Width="600"
+                            Height="460"
+                            Margin="25,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding LesCourses}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="auto"
+                                    Binding="{Binding Num_course}"
+                                    Header="Numéro de la course" />
+                                <DataGridTextColumn
+                                    Width="auto"
+                                    Binding="{Binding Distance}"
+                                    Header="Distance" />
+                                <DataGridTextColumn
+                                    Width="auto"
+                                    Binding="{Binding Heure_depart}"
+                                    Header="Heure de départ" />
+                                <DataGridTextColumn
+                                    Width="auto"
+                                    Binding="{Binding Prix_inscription}"
+                                    Header="Prix de l'inscription" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Height="100" />
+                        <DataGrid
+                            x:Name="Data_Coureurs"
+                            Width="600"
+                            Height="460"
+                            Margin="25,0,0,0"
+                            d:ItemsSource="{d:SampleData ItemCount=5}"
+                            AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Nom_coureur}"
+                                    Header="Nom" />
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Prenom_coureur}"
+                                    Header="Prenom" />
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Portable}"
+                                    Header="Telephone" />
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Federation}"
+                                    Header="Federation" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            x:Name="But_Selectionner_course"
+                            Width="175"
+                            Height="30"
+                            Margin="25,500,0,0"
+                            Content="Sélectionner une course"
+                            FontSize="16" />
+                        <Button
+                            x:Name="But_Ajouter_Coureur"
+                            Width="175"
+                            Height="30"
+                            Margin="875,500,0,0"
+                            Content="Ajouter un coureur"
+                            FontSize="16" />
+                    </StackPanel>
+
+                    <Label
+                        x:Name="Lab_Inscription"
+                        Margin="0,281,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Content="INSCRIPTION"
+                        FontSize="36"
+                        FontWeight="Bold" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

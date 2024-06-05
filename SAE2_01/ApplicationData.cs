@@ -66,6 +66,7 @@ namespace SAE2_01
 
             this.ConnexionBD();
             this.Read_Course();
+            this.Read_Coureur();
         }
         public void ConnexionBD()
         {

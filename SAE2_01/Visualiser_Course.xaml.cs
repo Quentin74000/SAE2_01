@@ -37,5 +37,12 @@ namespace SAE2_01
             this.Hide();
             inscription.ShowDialog();
         }
+
+        private void But_Visualiser_Coureur_Click(object sender, RoutedEventArgs e)
+        {
+            Visualiser_Coureur visualiser_coureur = new Visualiser_Coureur();
+            this.Hide();
+            visualiser_coureur.ShowDialog();
+        }
     }
 }

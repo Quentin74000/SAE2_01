@@ -75,12 +75,13 @@
                 Margin="50,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Content="Visualiser course" Click="But_Visualiser_Course_Click" />
+                Click="But_Visualiser_Course_Click"
+                Content="Visualiser course" />
             <Button
                 x:Name="But_Visualiser_Coureur"
                 Height="20"
                 Margin="50,0,0,0"
-                Content="Visualiser coureur" />
+                Content="Visualiser coureur" Click="But_Visualiser_Coureur_Click" />
             <Button
                 x:Name="But_Se_Connecter"
                 Height="20"
@@ -191,5 +192,13 @@
 
 
         </StackPanel>
+        <Label
+            x:Name="Lab_Inscription"
+            Margin="0,18,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="INSCRIPTION"
+            FontSize="36"
+            FontWeight="Bold" />
     </Grid>
 </Window>
