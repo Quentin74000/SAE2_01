@@ -23,5 +23,19 @@ namespace SAE2_01
         {
             InitializeComponent();
         }
+
+        private void But_Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            this.Hide();
+            mainwindow.ShowDialog();
+        }
+
+        private void But_Inscription_Course_Click(object sender, RoutedEventArgs e)
+        {
+            Inscription_course inscription = new Inscription_course();
+            this.Hide();
+            inscription.ShowDialog();
+        }
     }
 }

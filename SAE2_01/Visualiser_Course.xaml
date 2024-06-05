@@ -20,6 +20,7 @@
             <RowDefinition Height="549*" />
         </Grid.RowDefinitions>
         <Image
+            x:Name="Logo_semi_marathon"
             Width="138"
             Height="70"
             HorizontalAlignment="Left"
@@ -37,6 +38,7 @@
             </Image.RenderTransform>
         </Image>
         <Rectangle
+            x:Name="Logo_Beaune"
             Width="216"
             Height="70"
             Margin="0,0,12,0"
@@ -48,27 +50,40 @@
         </Rectangle>
         <WrapPanel Grid.Row="1">
             <Button
+                x:Name="But_Home"
                 Grid.Row="1"
                 Width="30"
                 Height="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
+                Click="But_Home_Click"
                 Content="">
                 <Button.Background>
                     <ImageBrush ImageSource="/Image/Logo_home.jpg" />
                 </Button.Background>
             </Button>
-            <Button Height="20" Content="Inscription course" />
             <Button
+                x:Name="But_Inscription_Course"
+                Height="20"
+                Click="But_Inscription_Course_Click"
+                Content="Inscription course" />
+            <Button
+                x:Name="But_Visualiser_Course"
                 Grid.Row="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Content="Visualiser course" />
-            <Button Height="20" Content="Visualiser coureur" />
-            <Button Height="20" Content="Se connecter" />
+            <Button
+                x:Name="But_Visualiser_Coureur"
+                Height="20"
+                Content="Visualiser coureur" />
+            <Button
+                x:Name="But_Se_Connecter"
+                Height="20"
+                Content="Se connecter" />
         </WrapPanel>
         <TextBox
-            x:Name="TBrechercheCourse"
+            x:Name="Lab_Rechercher_Course"
             Grid.Row="2"
             Width="147"
             Margin="18,10,0,0"
@@ -77,6 +92,7 @@
             Text="Rechercher une course"
             TextWrapping="Wrap" />
         <DataGrid
+            x:Name="Data_Course"
             Grid.Row="2"
             Width="auto"
             Height="516"

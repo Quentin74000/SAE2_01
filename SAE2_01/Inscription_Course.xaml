@@ -8,7 +8,11 @@
     Title="Inscription_course"
     Width="1280"
     Height="720"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ApplicationData x:Name="data" />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*" />
@@ -16,6 +20,7 @@
             <RowDefinition Height="549*" />
         </Grid.RowDefinitions>
         <Image
+            x:Name="Logo_semi_marathon"
             Width="138"
             Height="70"
             HorizontalAlignment="Left"
@@ -34,6 +39,7 @@
         </Image>
 
         <Rectangle
+            x:Name="Logo_Beaune"
             Width="216"
             Height="70"
             Margin="1036,0,0,0"
@@ -45,32 +51,38 @@
         </Rectangle>
         <WrapPanel Grid.Row="1">
             <Button
+                x:Name="But_Home"
                 Grid.Row="1"
                 Width="30"
                 Height="30"
                 Margin="25,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
+                Click="But_Home_Click"
                 Content="">
                 <Button.Background>
                     <ImageBrush ImageSource="/Image/Logo_home.jpg" />
                 </Button.Background>
             </Button>
             <Button
+                x:Name="But_Inscription"
                 Height="20"
                 Margin="50,0,0,0"
                 Content="Inscription course" />
             <Button
+                x:Name="But_Visualiser_Course"
                 Grid.Row="1"
                 Margin="50,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Content="Visualiser course" />
+                Content="Visualiser course" Click="But_Visualiser_Course_Click" />
             <Button
+                x:Name="But_Visualiser_Coureur"
                 Height="20"
                 Margin="50,0,0,0"
                 Content="Visualiser coureur" />
             <Button
+                x:Name="But_Se_Connecter"
                 Height="20"
                 Margin="675,0,0,0"
                 Content="Se connecter" />
@@ -80,6 +92,7 @@
 
             <StackPanel Height="75" Orientation="Horizontal">
                 <Label
+                    x:Name="Lab_Liste_des_courses"
                     Width="310"
                     Height="60"
                     Margin="25,10,0,0"
@@ -88,6 +101,7 @@
                     FontWeight="Bold"
                     Foreground="White" />
                 <Label
+                    x:Name="Lab_Liste_des_coureurs"
                     Width="310"
                     Height="60"
                     Margin="315,10,0,0"
@@ -101,28 +115,38 @@
                 Height="460"
                 Orientation="Horizontal">
                 <DataGrid
+                    x:Name="Data_Course"
+                    Grid.Row="2"
                     Width="600"
                     Height="460"
                     Margin="25,0,0,0"
-                    d:ItemsSource="{d:SampleData ItemCount=5}"
-                    AutoGenerateColumns="False">
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding LesCourses}">
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            Width="80"
-                            Binding="{Binding num_course}"
-                            Header="Nom" />
+                            Width="auto"
+                            Binding="{Binding Num_course}"
+                            Header="Numéro de la course" />
                         <DataGridTextColumn
-                            Width="80"
-                            Binding="{Binding distance}"
-                            Header="Prenom" />
+                            Width="auto"
+                            Binding="{Binding Distance}"
+                            Header="Distance" />
                         <DataGridTextColumn
-                            Width="80"
-                            Binding="{Binding prix_inscription}"
-                            Header="Telephone" />
+                            Width="auto"
+                            Binding="{Binding Heure_depart}"
+                            Header="Heure de départ" />
+                        <DataGridTextColumn
+                            Width="auto"
+                            Binding="{Binding Prix_inscription}"
+                            Header="Prix de l'inscription" />
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Height="100" />
                 <DataGrid
+                    x:Name="Data_Coureurs"
                     Width="600"
                     Height="460"
                     Margin="25,0,0,0"
@@ -131,27 +155,33 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Width="80"
-                            Binding="{Binding num_course}"
+                            Binding="{Binding Nom_coureur}"
                             Header="Nom" />
                         <DataGridTextColumn
                             Width="80"
-                            Binding="{Binding distance}"
+                            Binding="{Binding Prenom_coureur}"
                             Header="Prenom" />
                         <DataGridTextColumn
                             Width="80"
-                            Binding="{Binding prix_inscription}"
+                            Binding="{Binding Portable}"
                             Header="Telephone" />
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding Federation}"
+                            Header="Federation" />
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button
+                    x:Name="But_Selectionner_course"
                     Width="175"
                     Height="30"
                     Margin="25,15,0,0"
                     Content="Sélectionner une course"
                     FontSize="16" />
                 <Button
+                    x:Name="But_Ajouter_Coureur"
                     Width="175"
                     Height="30"
                     Margin="875,15,0,0"

@@ -20,6 +20,7 @@
             <RowDefinition Height="549*" />
         </Grid.RowDefinitions>
         <Image
+            x:Name="Logo_semi_marathon"
             Width="138"
             Height="70"
             HorizontalAlignment="Left"
@@ -38,6 +39,7 @@
         </Image>
 
         <Rectangle
+            x:Name="Logo_Beaune"
             Width="216"
             Height="70"
             Margin="0,0,12,0"
@@ -49,6 +51,7 @@
         </Rectangle>
         <WrapPanel Grid.Row="1">
             <Button
+                x:Name="But_Home"
                 Grid.Row="1"
                 Width="30"
                 Height="30"
@@ -59,21 +62,33 @@
                     <ImageBrush ImageSource="/Image/Logo_home.jpg" />
                 </Button.Background>
             </Button>
-            <Button Height="20" Content="Inscription course" />
             <Button
+                x:Name="But_Inscription_Course"
+                Height="20"
+                Click="But_inscrire_Click"
+                Content="Inscription course" />
+            <Button
+                x:Name="But_Visualiser_Course"
                 Grid.Row="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Click="Button_Click"
+                Click="But_Visualiser_Course_Click"
                 Content="Visualiser course" />
-            <Button Height="20" Content="Visualiser coureur" />
-            <Button Height="20" Content="Se connecter" />
+            <Button
+                x:Name="But_Visualier_Coureur"
+                Height="20"
+                Content="Visualiser coureur" />
+            <Button
+                x:Name="But_Se_Connecter"
+                Height="20"
+                Content="Se connecter" />
         </WrapPanel>
         <Rectangle
             Grid.Row="2"
             Fill="#FFBC134F"
             Stroke="Black" />
         <Label
+            x:Name="Lab_Participez_Meilleur_Marathon"
             Grid.Row="2"
             Width="804"
             Height="63"
@@ -85,7 +100,7 @@
             FontWeight="Bold"
             Foreground="White" />
         <Button
-            x:Name="Butinscrire"
+            x:Name="But_Inscrire"
             Grid.Row="2"
             Width="130"
             Height="50"
@@ -94,6 +109,7 @@
             VerticalAlignment="Top"
             Background="#00000000"
             BorderBrush="White"
+            Click="But_inscrire_Click"
             Content="S'inscrire"
             FontSize="24"
             Foreground="White" />
