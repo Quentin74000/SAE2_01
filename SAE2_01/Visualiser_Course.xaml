@@ -95,7 +95,7 @@
             x:Name="Data_Course"
             Grid.Row="2"
             Width="auto"
-            Height="516"
+            Height="auto"
             Margin="18,33,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
@@ -115,10 +115,6 @@
                     Width="auto"
                     Binding="{Binding Heure_depart}"
                     Header="Heure de départ" />
-                <DataGridTextColumn
-                    Width="auto"
-                    Binding="{Binding Prix_inscription}"
-                    Header="Prix de l'inscription" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
