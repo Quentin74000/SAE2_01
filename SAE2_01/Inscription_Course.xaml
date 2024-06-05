@@ -182,11 +182,17 @@
                     Content="Sélectionner une course"
                     FontSize="16" />
                 <Button
+                    x:Name="But_Ajouter_Nouveau_Coureur"
+                    Height="30"
+                    Margin="600,15,0,0"
+                    Content="Ajouter un nouveau coureur"
+                    FontSize="16" />
+                <Button
                     x:Name="But_Ajouter_Coureur"
                     Width="175"
                     Height="30"
-                    Margin="875,15,0,0"
-                    Content="Ajouter un coureur"
+                    Margin="70,15,0,0"
+                    Content="Valider ce coureur"
                     FontSize="16" />
             </StackPanel>
 
