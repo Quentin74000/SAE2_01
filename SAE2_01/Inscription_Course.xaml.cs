@@ -37,14 +37,12 @@ namespace SAE2_01
         private void But_Home_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
-            this.Hide();
             mainwindow.ShowDialog();
         }
 
         private void But_Visualiser_Course_Click(object sender, RoutedEventArgs e)
         {
             Visualiser_Course visualiser_course = new Visualiser_Course();
-            this.Hide();
             visualiser_course.ShowDialog();
         }
     }

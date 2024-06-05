@@ -28,14 +28,12 @@ namespace SAE2_01
         private void But_Visualiser_Course_Click(object sender, RoutedEventArgs e)
         {
             Visualiser_Course visualiser = new Visualiser_Course();
-            this.Hide();
             visualiser.ShowDialog();
         }
 
         private void But_inscrire_Click(object sender, RoutedEventArgs e)
         {
             Inscription_course inscription = new Inscription_course();
-            this.Hide();
             inscription.ShowDialog();
         }
     }

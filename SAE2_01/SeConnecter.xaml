@@ -1,0 +1,40 @@
+﻿<Window
+    x:Class="SAE2_01.SeConnecter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE2_01"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="SeConnecter"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ApplicationData x:Name="data" />
+    </Window.DataContext>
+    <Grid>
+        <TextBox
+            x:Name="tbLogin"
+            Width="120"
+            Margin="251,132,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextWrapping="Wrap" />
+        <PasswordBox
+            x:Name="pbpassword"
+            Width="120"
+            Margin="273,246,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Password="" />
+        <Button
+            x:Name="butconnexion"
+            Margin="371,313,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="butconnexion_Click"
+            Content="Se connecter" />
+
+    </Grid>
+</Window>

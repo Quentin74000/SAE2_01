@@ -20,6 +20,7 @@ namespace SAE2_01
 
         private ObservableCollection<Course> lesCourses = new ObservableCollection<Course>();
         private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
+        private SeConnecter seConnecter = new SeConnecter();
         private NpgsqlConnection connexion = null;   // futur lien à la BD
 
 
@@ -66,6 +67,7 @@ namespace SAE2_01
 
             this.ConnexionBD();
             this.Read_Course();
+            this.Read_Coureur();
         }
         public void ConnexionBD()
         {
@@ -76,8 +78,8 @@ namespace SAE2_01
                 "port=5433;" +
                 "Database=marathon_beaune;" +
                 "Search Path=marathon_beaune;" +
-                "uid=dodeyk;" +
-                "password=8AepKo;";
+                "uid="+seConnecter.login+";" +
+                "password="+seConnecter.password+";";
                 // à compléter dans les "" 
                 // @ sert à enlever tout pb avec les caractères 
                 Connexion.Open();
