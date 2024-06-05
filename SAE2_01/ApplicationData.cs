@@ -61,8 +61,8 @@ namespace SAE2_01
                 Connexion = new NpgsqlConnection();
                 Connexion.ConnectionString = "Server=srv-peda-new;" +
                 "port=5433;" +
-                "Database=marathon beaune;" +
-                "Search Path=marathon beaune;" +
+                "Database=marathon_beaune;" +
+                "Search Path=marathon_beaune;" +
                 "uid=dodeyk;" +
                 "password=8AepKo;";
                 // à compléter dans les "" 
@@ -87,7 +87,7 @@ namespace SAE2_01
         }
         public int Read()
         {
-            String sql = "SELECT id, num_course,  distance,  heure_depart,  prix_inscription from Course";
+            String sql = "SELECT num_course,  distance,  heure_depart,  prix_inscription from Course";
             try
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
@@ -95,9 +95,9 @@ namespace SAE2_01
                 dataAdapter.Fill(dataTable);
                 foreach (DataRow res in dataTable.Rows)
                 {
-                    Course nouveau = new Course(int.Parse(res["id"].ToString()),
-                    int.Parse(res["num_course"].ToString()), float.Parse(res["distance"].ToString()),
-                    res["heure_depart"].ToString(), float.Parse(res["prix_inscription"].ToString()));
+                    Course nouveau = new Course(int.Parse(res["num_course"].ToString()), 
+                    float.Parse(res["distance"].ToString()), res["heure_depart"].ToString(), 
+                    float.Parse(res["prix_inscription"].ToString()));
                     LesCourses.Add(nouveau);
                 }
                 return dataTable.Rows.Count;

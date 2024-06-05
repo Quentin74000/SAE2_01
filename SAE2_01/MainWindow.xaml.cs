@@ -28,6 +28,7 @@ namespace SAE2_01
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Visualiser_Course visualiser = new Visualiser_Course();
+            this.Hide();
             visualiser.ShowDialog();
         }
     }

@@ -12,7 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="549*" />
         </Grid.RowDefinitions>
         <Image
@@ -36,7 +36,7 @@
         <Rectangle
             Width="216"
             Height="70"
-            Margin="1052,0,0,0"
+            Margin="1036,0,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
             <Rectangle.Fill>
@@ -64,5 +64,54 @@
             <Button Height="20" Content="Visualiser coureur" />
             <Button Height="20" Content="Se connecter" />
         </WrapPanel>
+        <StackPanel Grid.Row="2">
+            <StackPanel Height="373" Orientation="Horizontal">
+                <DataGrid
+                    Width="600"
+                    Height="125"
+                    Margin="25,0,0,0"
+                    d:ItemsSource="{d:SampleData ItemCount=5}"
+                    AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding num_course}"
+                            Header="Nom" />
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding distance}"
+                            Header="Prenom" />
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding prix_inscription}"
+                            Header="Telephone" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Height="100" />
+                <DataGrid
+                    Width="600"
+                    Height="125"
+                    Margin="25,0,0,0"
+                    d:ItemsSource="{d:SampleData ItemCount=5}"
+                    AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding num_course}"
+                            Header="Nom" />
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding distance}"
+                            Header="Prenom" />
+                        <DataGridTextColumn
+                            Width="80"
+                            Binding="{Binding prix_inscription}"
+                            Header="Telephone" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+
+        </StackPanel>
     </Grid>
 </Window>
