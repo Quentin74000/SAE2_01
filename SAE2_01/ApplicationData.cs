@@ -19,6 +19,7 @@ namespace SAE2_01
     {
 
         private ObservableCollection<Course> lesCourses = new ObservableCollection<Course>();
+        private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
         private NpgsqlConnection connexion = null;   // futur lien à la BD
 
 
@@ -32,6 +33,18 @@ namespace SAE2_01
             set
             {
                 this.lesCourses= value;
+            }
+        }
+        public ObservableCollection<Coureur> LesCoureurs
+        {
+            get
+            {
+                return this.lesCoureurs;
+            }
+
+            set
+            {
+                this.lesCoureurs = value;
             }
         }
 
@@ -52,7 +65,7 @@ namespace SAE2_01
         {
 
             this.ConnexionBD();
-            this.Read();
+            this.Read_Course();
         }
         public void ConnexionBD()
         {
@@ -85,7 +98,7 @@ namespace SAE2_01
             catch (Exception e)
             { Console.WriteLine("pb à la déconnexion : " + e); }
         }
-        public int Read()
+        public int Read_Course()
         {
             String sql = "SELECT num_course,  distance,  heure_depart,  prix_inscription from Course";
             try
@@ -99,6 +112,27 @@ namespace SAE2_01
                     float.Parse(res["distance"].ToString()), res["heure_depart"].ToString(), 
                     float.Parse(res["prix_inscription"].ToString()));
                     LesCourses.Add(nouveau);
+                }
+                return dataTable.Rows.Count;
+            }
+            catch (NpgsqlException e)
+            { Console.WriteLine("pb de requete : " + e); return 0; }
+        }
+        public int Read_Coureur()
+        {
+            String sql = "SELECT * from Coureur";
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                foreach (DataRow res in dataTable.Rows)
+                {
+                    Coureur nouveau = new Coureur(int.Parse(res["num_coureur"].ToString()), 
+                    res["code_club"].ToString(),int.Parse(res["num_federation"].ToString()), res["nom_coureur"].ToString(),
+                    res["lien_photo"].ToString(), res["prenom_coureur"].ToString(), res["ville_coureur"].ToString(),
+                    res["portable"].ToString(), res["sexe"].ToString(), res["num_licence"].ToString());
+                    LesCoureurs.Add(nouveau);
                 }
                 return dataTable.Rows.Count;
             }
