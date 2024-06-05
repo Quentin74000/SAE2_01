@@ -6,7 +6,6 @@ namespace SAE2_01
 {
     public class Course : ICloneable
     {
-        private int id;
         private int num_course;
         private float distance;
         private string heure_depart;
@@ -18,23 +17,6 @@ namespace SAE2_01
             this.Distance = distance;
             this.Heure_depart = heure_depart;
             this.Prix_inscription = prix_inscription;
-        }
-        public Course(int id, int num_course, float distance, string heure_depart, float prix_inscription) : this( num_course,  distance,  heure_depart,  prix_inscription)
-        {
-            this.Id = id;
-        }
-
-        public int Id
-        {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                this.id = value;
-            }
         }
         public int Num_course
         {

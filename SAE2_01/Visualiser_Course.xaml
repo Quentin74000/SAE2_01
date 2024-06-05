@@ -17,7 +17,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="70*" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
             <RowDefinition Height="549*" />
         </Grid.RowDefinitions>
         <Image
@@ -79,7 +78,7 @@
             TextWrapping="Wrap" />
         <DataGrid
             Grid.Row="2"
-            Width="1262"
+            Width="auto"
             Height="516"
             Margin="18,33,0,0"
             HorizontalAlignment="Left"
