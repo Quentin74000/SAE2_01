@@ -19,8 +19,6 @@ namespace SAE2_01
     /// </summary>
     public partial class SeConnecter : Window
     {
-        public string login;
-        public string password;
         public SeConnecter()
         {
             InitializeComponent();
@@ -28,8 +26,10 @@ namespace SAE2_01
 
         private void butconnexion_Click(object sender, RoutedEventArgs e)
         {
-            login = tbLogin.Text;
-            password = pbpassword.Password;
+            ApplicationData.LOGIN = tbLogin.Text;
+            ApplicationData.PASSWORD = pbpassword.Password;
+            this.DialogResult = true;
         }
+        
     }
 }

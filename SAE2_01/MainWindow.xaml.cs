@@ -22,7 +22,16 @@ namespace SAE2_01
     {
         public MainWindow()
         {
+            bool resultat;
+            SeConnecter seConnecter = new SeConnecter();
+            resultat = (bool)seConnecter.ShowDialog();
+            if (resultat == true)
+            {
+                ApplicationData dataconnexion = new ApplicationData();
+                dataconnexion.ConnexionBD();
+            }
             InitializeComponent();
+
         }
 
         private void But_Visualiser_Course_Click(object sender, RoutedEventArgs e)
@@ -35,13 +44,6 @@ namespace SAE2_01
         {
             Inscription_course inscription = new Inscription_course();
             inscription.ShowDialog();
-        }
-
-        private void But_Visualier_Coureur_Click(object sender, RoutedEventArgs e)
-        {
-            Visualiser_Coureur visualiser_coureur = new Visualiser_Coureur();
-            this.Hide();
-            visualiser_coureur.ShowDialog();
         }
     }
 }

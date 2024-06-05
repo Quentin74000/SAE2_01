@@ -9,9 +9,6 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Window.DataContext>
-        <local:ApplicationData x:Name="data" />
-    </Window.DataContext>
     <Grid>
         <TextBox
             x:Name="tbLogin"
