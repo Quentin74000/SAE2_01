@@ -8,6 +8,7 @@
     Title="SeConnecter"
     Width="800"
     Height="450"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <TextBox
@@ -31,7 +32,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="butconnexion_Click"
-            Content="Se connecter" />
+            Content="Se connecter"
+            IsDefault="True" />
 
     </Grid>
 </Window>

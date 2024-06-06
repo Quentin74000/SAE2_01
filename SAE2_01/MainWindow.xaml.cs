@@ -24,12 +24,16 @@ namespace SAE2_01
         {
             bool resultat;
             SeConnecter seConnecter = new SeConnecter();
-            resultat = (bool)seConnecter.ShowDialog();
-            if (resultat == true)
+            ConnexionBD dataconnexion = new ConnexionBD();
+            do
             {
-                ApplicationData dataconnexion = new ApplicationData();
-                dataconnexion.ConnexionBD();
-            }
+                seConnecter = new SeConnecter();
+                resultat = (bool)seConnecter.ShowDialog();
+                if (resultat == true)
+                {
+                    dataconnexion = new ConnexionBD();
+                }
+            } while (dataconnexion.Connexion() == false);
             InitializeComponent();
 
         }
