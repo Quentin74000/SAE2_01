@@ -49,7 +49,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label
-            x:Name="Lab_Accueil"
+            x:Name="Lab_Nom_Page"
             Width="154"
             Height="58"
             HorizontalAlignment="Center"
@@ -183,22 +183,95 @@
                             Content="Sélectionner une course"
                             FontSize="16" />
                         <Button
+                            x:Name="But_Ajouter_Nouveau_Coureur"
+                            Height="30"
+                            Margin="600,500,0,0"
+                            Content="Ajouter un nouveau coureur"
+                            FontSize="16" Click="But_Ajouter_Nouveau_Coureur_Click" />
+                        <Button
                             x:Name="But_Ajouter_Coureur"
                             Width="175"
                             Height="30"
-                            Margin="875,500,0,0"
-                            Content="Ajouter un coureur"
+                            Margin="73,500,0,0"
+                            Content="Valider ce coureur"
                             FontSize="16" />
                     </StackPanel>
-
-                    <Label
-                        x:Name="Lab_Inscription"
-                        Margin="0,281,0,0"
-                        HorizontalAlignment="Center"
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Tab_Visualiser_Course" Header="Course">
+                <Grid Background="#FFBC134F">
+                    <TextBox
+                        x:Name="Lab_Rechercher_Course"
+                        Grid.Row="2"
+                        Width="147"
+                        Margin="18,10,0,0"
+                        HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Content="INSCRIPTION"
-                        FontSize="36"
-                        FontWeight="Bold" />
+                        Text="Rechercher une course"
+                        TextWrapping="Wrap" />
+                    <DataGrid
+                        x:Name="Data_Course_Rechercher"
+                        Width="auto"
+                        Height="300"
+                        Margin="18,33,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCourses}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Num_course}"
+                                Header="Numéro de la course" />
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Distance}"
+                                Header="Distance" />
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Heure_depart}"
+                                Header="Heure de départ" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Tab_Visualiser_Coureur" Header="Coureur">
+                <Grid Background="#FFBC134F">
+                    <TextBox
+                        x:Name="Lab_Rechercher_Coureur"
+                        Grid.Row="2"
+                        Width="147"
+                        Margin="18,10,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="Rechercher un coureur"
+                        TextWrapping="Wrap" />
+                    <DataGrid
+                        x:Name="Data_Coureur"
+                        Width="auto"
+                        Height="300"
+                        Margin="18,33,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCourses}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Num_course}"
+                                Header="Numéro de la course" />
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Distance}"
+                                Header="Distance" />
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Heure_depart}"
+                                Header="Heure de départ" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>

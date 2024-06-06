@@ -49,5 +49,11 @@ namespace SAE2_01
             Inscription_course inscription = new Inscription_course();
             inscription.ShowDialog();
         }
+
+        private void But_Ajouter_Nouveau_Coureur_Click(object sender, RoutedEventArgs e)
+        {
+            FicheInscription ficheinscription = new FicheInscription();
+            ficheinscription.ShowDialog();
+        }
     }
 }
