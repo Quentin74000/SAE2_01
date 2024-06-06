@@ -16,17 +16,10 @@
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                      Value="{Binding 
-                               RelativeSource={x:Static RelativeSource.Self},   
-                               Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
-
-        <local:GenreClientToBool x:Key="convertGenreToBool"/>
-
-
     </Window.Resources>
 
 
@@ -34,13 +27,35 @@
 
 
     <Grid>
-        <Label Content="Tous les champs sont obligatoires" HorizontalContentAlignment="Right" Foreground="Gray" FontSize="10" HorizontalAlignment="Center"/>
-
-        <local:PanelClient x:Name="UCPanelClient" Grid.Column="1"  DataContext="{Binding SelectedItem, ElementName=dgClients}" VerticalAlignment="Top" Margin="0,30,0,0"/>
-        <StackPanel Orientation="Horizontal" Width="240" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" >
-            <Button x:Name="butValider" Content="Valider" Width="100" HorizontalAlignment="Left"  IsDefault="True" VerticalAlignment="Top" Margin="0,20,0,0" Click="butValider_Click"/>
-            <Button x:Name="butAnnuler" Content="Annuler" Width="100" HorizontalAlignment="Left"  IsDefault="True" VerticalAlignment="Top" Margin="40,20,0,0" Click="butAnnuler_Click" IsCancel="True"/>
-        </StackPanel >
+        <Label
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Content="Tous les champs sont obligatoires"
+            FontSize="10"
+            Foreground="Gray" />
+        <StackPanel
+            Width="240"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                x:Name="butValider"
+                Width="100"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Valider"
+                IsDefault="True" />
+            <Button
+                x:Name="butAnnuler"
+                Width="100"
+                Margin="40,20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Annuler"
+                IsDefault="True" />
+        </StackPanel>
     </Grid>
 
 </Window>
