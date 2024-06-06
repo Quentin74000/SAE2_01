@@ -39,10 +39,8 @@
 
         <Rectangle
             x:Name="Logo_Beaune"
-            Width="216"
             Height="70"
-            Margin="1052,0,0,0"
-            HorizontalAlignment="Left"
+            Margin="1052,0,12,0"
             VerticalAlignment="Center">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Image/logo BEAUNE.jpg" />
@@ -187,8 +185,9 @@
                             x:Name="But_Ajouter_Nouveau_Coureur"
                             Height="30"
                             Margin="600,500,0,0"
+                            Click="But_Ajouter_Nouveau_Coureur_Click"
                             Content="Ajouter un nouveau coureur"
-                            FontSize="16" Click="But_Ajouter_Nouveau_Coureur_Click" />
+                            FontSize="16" />
                         <Button
                             x:Name="But_Ajouter_Coureur"
                             Width="175"
