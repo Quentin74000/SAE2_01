@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image\Coureurs.png" />
     <None Remove="Image\logo BEAUNE.jpg" />
+    <None Remove="Image\Logo Utilisateur.png" />
     <None Remove="Image\logo-BEAUNE.jpg" />
     <None Remove="Image\Logo-Semi-Beaune-removebg-preview.jpg" />
     <None Remove="Image\Logo-Semi-Beaune.jpg" />
@@ -20,7 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Image\Coureurs.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Image\logo BEAUNE.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Logo Utilisateur.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\Logo-Semi-Beaune-removebg-preview.jpg">
