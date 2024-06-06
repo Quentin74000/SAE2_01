@@ -50,14 +50,15 @@
         </Rectangle>
         <Label
             x:Name="Lab_Nom_Page"
-            Width="154"
-            Height="58"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Content="ACCUEIL"
             FontSize="36"
             FontWeight="Bold" />
-        <TabControl Grid.Row="1">
+        <TabControl
+            x:Name="tcGlobal"
+            Grid.Row="1"
+            SelectionChanged="tcGlobal_SelectionChanged">
             <TabItem x:Name="Tab_Accueil" Header="Accueil">
                 <Grid Background="#FFBC134F">
 

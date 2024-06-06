@@ -37,17 +37,33 @@ namespace SAE2_01
             InitializeComponent();
 
         }
-
-        private void But_Visualiser_Course_Click(object sender, RoutedEventArgs e)
-        {
-            Visualiser_Course visualiser = new Visualiser_Course();
-            visualiser.ShowDialog();
-        }
-
         private void But_inscrire_Click(object sender, RoutedEventArgs e)
         {
-            Inscription_course inscription = new Inscription_course();
-            inscription.ShowDialog();
+            tcGlobal.SelectedItem=Tab_Incription;
+        }
+
+        private void tcGlobal_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (tcGlobal.SelectedItem == Tab_Accueil)
+            {
+                Lab_Nom_Page.Content = string.Empty;
+                Lab_Nom_Page.Content = "Accueil";
+            }
+            else if (tcGlobal.SelectedItem == Tab_Incription)
+            {
+                Lab_Nom_Page.Content = string.Empty;
+                Lab_Nom_Page.Content = "Inscription";
+            }
+            else if (tcGlobal.SelectedItem == Tab_Visualiser_Coureur)
+            {
+                Lab_Nom_Page.Content = string.Empty;
+                Lab_Nom_Page.Content = "Rechercher un coureur";
+            }
+            else
+            {
+                Lab_Nom_Page.Content = string.Empty;
+                Lab_Nom_Page.Content = "Rechercher une course";
+            }
         }
 
         private void But_Ajouter_Nouveau_Coureur_Click(object sender, RoutedEventArgs e)
