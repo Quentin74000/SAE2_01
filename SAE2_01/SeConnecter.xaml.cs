@@ -26,8 +26,8 @@ namespace SAE2_01
 
         private void butconnexion_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationData.LOGIN = tbLogin.Text;
-            ApplicationData.PASSWORD = pbpassword.Password;
+            ConnexionBD.LOGIN = tbLogin.Text;
+            ConnexionBD.PASSWORD = pbpassword.Password;
             this.DialogResult = true;
         }
         

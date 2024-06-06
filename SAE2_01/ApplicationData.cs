@@ -20,9 +20,8 @@ namespace SAE2_01
 
         private ObservableCollection<Course> lesCourses = new ObservableCollection<Course>();
         private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
-        private SeConnecter seConnecter = new SeConnecter();
-        private NpgsqlConnection connexion = null;   // futur lien à la BD
-        public static string LOGIN, PASSWORD;
+        public static NpgsqlConnection connexionBD;
+        private NpgsqlConnection Connexion = connexionBD;   // futur lien à la BD
 
 
         public ObservableCollection<Course> LesCourses
@@ -50,44 +49,12 @@ namespace SAE2_01
             }
         }
 
-        public NpgsqlConnection Connexion
-        {
-            get
-            {
-                return this.connexion;
-            }
-
-            set
-            {
-                this.connexion = value;
-            }
-        }
+        
 
         public ApplicationData()
         {
-            
-        }
-        public void ConnexionBD()
-        {
-            try
-            {
-                Connexion = new NpgsqlConnection();
-                Connexion.ConnectionString = "Server=srv-peda-new;" +
-                "port=5433;" +
-                "Database=marathon_beaune;" +
-                "Search Path=marathon_beaune;" +
-                "uid="+LOGIN+";" +
-                "password="+PASSWORD+";";
-                // à compléter dans les "" 
-                // @ sert à enlever tout pb avec les caractères 
-                Connexion.Open();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(PASSWORD);
-                Console.WriteLine("pb de connexion : " + e);
-                // juste pour le debug : à transformer en MsgBox 
-            }
+            Read_Course();
+            Read_Coureur();
         }
         public void DeconnexionBD()
         {
