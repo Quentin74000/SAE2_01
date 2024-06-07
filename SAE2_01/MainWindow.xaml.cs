@@ -36,7 +36,7 @@ namespace SAE2_01
                 }
             } while (dataconnexion.Connexion() == false);
             InitializeComponent();
-
+            lab_utilisateur.Content = ConnexionBD.LOGIN;
         }
         private void But_inscrire_Click(object sender, RoutedEventArgs e)
         {
@@ -96,10 +96,36 @@ namespace SAE2_01
             {
                 Coureur coureurSelectionne = (Coureur)Data_Coureurs.SelectedItem;
                 Data_Course.IsEnabled = true;
-                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur,TimeOnly.Parse(tbTPS.Text));
+                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur,TimeOnly.Parse(tb_TPS.Text));
             }
             else
                 MessageBox.Show(this, "Veuillez selectionner un coureur");
+
+        }
+
+        private void But_Deconnecter_Quitter_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void But_Changer_Utilisateur_Click(object sender, RoutedEventArgs e)
+        {
+
+            bool resultat;
+            SeConnecter seConnecter = new SeConnecter();
+            ConnexionBD dataconnexion = new ConnexionBD();
+            seConnecter.Close();
+            do
+            {
+                resultat = (bool)seConnecter.ShowDialog();
+                if (resultat == true)
+                {
+                    dataconnexion = new ConnexionBD();
+                    this.Hide();
+                    MainWindow nouvellemainwindow = new MainWindow();
+                    nouvellemainwindow.Show();
+                }
+            } while (dataconnexion.Connexion() == false);
 
         }
     }

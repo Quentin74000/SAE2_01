@@ -72,6 +72,15 @@
             Margin="574,137,574,433"
             Source="/Image/Logo Utilisateur.png"
             Stretch="Fill" />
+        <Button
+            x:Name="But_Quitter"
+            Width="100"
+            Height="30"
+            Margin="1150,25,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Quitter"
+            FontSize="16" Click="But_Quitter_Click" />
 
     </Grid>
 </Window>

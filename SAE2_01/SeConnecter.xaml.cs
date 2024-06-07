@@ -30,6 +30,10 @@ namespace SAE2_01
             ConnexionBD.PASSWORD = pbpassword.Password;
             this.DialogResult = true;
         }
-        
+
+        private void But_Quitter_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
