@@ -10,6 +10,9 @@
     Height="500"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ApplicationData x:Name="data" />
+    </Window.DataContext>
 
 
     <Window.Resources>
@@ -23,11 +26,6 @@
         <local:GenreCoureurToBool x:Key="convertGenreToBool" />
 
     </Window.Resources>
-
-
-
-
-
     <Grid>
         <Label
             HorizontalAlignment="Center"

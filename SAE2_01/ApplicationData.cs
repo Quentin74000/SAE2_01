@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
 using Npgsql;
 
 namespace SAE2_01
@@ -22,7 +23,6 @@ namespace SAE2_01
         private ObservableCollection<Course> lesCoursesSelect = new ObservableCollection<Course>();
         private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
         public static NpgsqlConnection connexionBD;
-        public static Coureur nouveauCoureur;
         public static Inscription nouvelleInscription;
         public static Inscription2 nouvelleInscription2;
         private NpgsqlConnection Connexion = connexionBD;   // futur lien à la BD
@@ -71,7 +71,6 @@ namespace SAE2_01
         {
             Read_Course();
             Read_Coureur();
-            Ajouter_Coureur();
         }
         public void DeconnexionBD()
         {
@@ -83,7 +82,7 @@ namespace SAE2_01
             catch (Exception e)
             { Console.WriteLine("pb à la déconnexion : " + e); }
         }
-        public void Ajouter_Coureur()
+        public void Ajouter_Coureur(Coureur nouveauCoureur)
         {
             if (nouveauCoureur != null)
             {
@@ -100,6 +99,7 @@ namespace SAE2_01
                 {
                     MessageBox.Show("pb de requete : " + sql + "" + sqlE, "Pb requête", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                LesCoureurs.Add(nouveauCoureur);
             }
         }
         public int Read_Course()

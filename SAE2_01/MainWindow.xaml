@@ -153,6 +153,7 @@
                             Height="460"
                             Margin="25,0,0,0"
                             AutoGenerateColumns="False"
+                            IsEnabled="False"
                             IsReadOnly="True"
                             ItemsSource="{Binding LesCoureurs}">
                             <DataGrid.Columns>
@@ -170,7 +171,7 @@
                                     Header="Telephone" />
                                 <DataGridTextColumn
                                     Width="80"
-                                    Binding="{Binding Federation}"
+                                    Binding="{Binding Num_federation}"
                                     Header="Federation" />
                             </DataGrid.Columns>
                         </DataGrid>
@@ -206,7 +207,8 @@
                             Margin="200,500,0,0"
                             Click="But_Ajouter_Coureur_Click"
                             Content="Valider ce coureur"
-                            FontSize="16" />
+                            FontSize="16"
+                            IsEnabled="False" />
 
                     </StackPanel>
                     <Label
@@ -234,7 +236,7 @@
                     <DataGrid
                         x:Name="Data_Course_Rechercher"
                         Width="auto"
-                        Height="300"
+                        Height="auto"
                         Margin="18,33,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
@@ -259,7 +261,7 @@
                     <DataGrid
                         x:Name="Data_Coureur_Rechercher_Copy"
                         Width="auto"
-                        Height="198"
+                        Height="auto"
                         Margin="18,354,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
@@ -309,10 +311,11 @@
                     <DataGrid
                         x:Name="Data_Coureur_Rechercher"
                         Width="auto"
-                        Height="300"
+                        Height="auto"
                         Margin="18,33,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        AutoGenerateColumns="False"
                         IsReadOnly="True"
                         ItemsSource="{Binding LesCoureurs}">
                         <DataGrid.Columns>
@@ -330,20 +333,21 @@
                                 Header="Telephone" />
                             <DataGridTextColumn
                                 Width="80"
-                                Binding="{Binding Federation}"
+                                Binding="{Binding Num_federation}"
                                 Header="Federation" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <DataGrid
                         x:Name="Data_Course_Rechercher_Copy"
                         Width="auto"
-                        Height="186"
+                        Height="auto"
                         Margin="18,366,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         AutoGenerateColumns="False"
                         IsReadOnly="True"
-                        ItemsSource="{Binding LesCoursesSelect}">
+                        ItemsSource="{Binding LesCoursesSelect}"
+                        Visibility="Hidden">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="auto"
@@ -399,7 +403,7 @@
                         Content="Changer d'utilisateur"
                         FontSize="16" />
                     <Label
-                        x:Name="lab_utilisateur"
+                        x:Name="lab_user"
                         Height="35"
                         Margin="727,53,0,0"
                         HorizontalAlignment="Left"
