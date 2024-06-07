@@ -186,15 +186,17 @@
                             Content="Sélectionner une course"
                             FontSize="16" />
                         <TextBox
-                            x:Name="tbTPS"
+                            x:Name="tb_TPS"
+                            Width="100"
                             Height="30"
-                            Margin="00,500,0,0"
+                            Margin="300,500,0,0"
+                            Background="#FFDDDDDD"
                             FontSize="16"
-                            Text="tps" />
+                            Text="" />
                         <Button
                             x:Name="But_Ajouter_Nouveau_Coureur"
                             Height="30"
-                            Margin="600,500,0,0"
+                            Margin="75,500,0,0"
                             Click="But_Ajouter_Nouveau_Coureur_Click"
                             Content="Ajouter un nouveau coureur"
                             FontSize="16" />
@@ -202,13 +204,21 @@
                             x:Name="But_Ajouter_Coureur"
                             Width="175"
                             Height="30"
-                            Margin="73,500,0,0"
+                            Margin="200,500,0,0"
                             Click="But_Ajouter_Coureur_Click"
                             Content="Valider ce coureur"
                             FontSize="16"
                             IsEnabled="False" />
 
                     </StackPanel>
+                    <Label
+                        Margin="382,515,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Temps prévu :"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="White" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab_Visualiser_Course" Header="Course">
@@ -292,6 +302,49 @@
                                 Header="Federation" />
                         </DataGrid.Columns>
                     </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Se_Deconnecter_Quitter" Header="Se déconnecter / Quitter">
+                <Grid Background="#FFBC134F">
+                    <StackPanel />
+                    <Label
+                        Margin="431,51,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Vous êtes connecté en tant que :"
+                        FontSize="20"
+                        Foreground="White" />
+                    <Button
+                        x:Name="But_Deconnecter_Quitter"
+                        Width="200"
+                        Height="35"
+                        Margin="0,163,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Click="But_Deconnecter_Quitter_Click"
+                        Content="Se déconnecter et quitter"
+                        FontSize="16" />
+                    <Button
+                        x:Name="But_Changer_Utilisateur"
+                        Width="200"
+                        Height="35"
+                        Margin="0,257,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Click="But_Changer_Utilisateur_Click"
+                        Content="Changer d'utilisateur"
+                        FontSize="16" />
+                    <Label
+                        x:Name="lab_utilisateur"
+                        Height="35"
+                        Margin="727,53,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content=""
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White" />
+
                 </Grid>
             </TabItem>
         </TabControl>

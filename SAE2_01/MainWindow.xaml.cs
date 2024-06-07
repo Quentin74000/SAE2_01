@@ -137,5 +137,31 @@ namespace SAE2_01
                 return (unCoureur.Nom_coureur.StartsWith(Lab_Rechercher_Coureur.Text, StringComparison.OrdinalIgnoreCase)) ||
                     (unCoureur.Prenom_coureur.StartsWith(Lab_Rechercher_Coureur.Text, StringComparison.OrdinalIgnoreCase));
         }
+
+        private void But_Deconnecter_Quitter_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void But_Changer_Utilisateur_Click(object sender, RoutedEventArgs e)
+        {
+
+            bool resultat;
+            SeConnecter seConnecter = new SeConnecter();
+            ConnexionBD dataconnexion = new ConnexionBD();
+            seConnecter.Close();
+            do
+            {
+                resultat = (bool)seConnecter.ShowDialog();
+                if (resultat == true)
+                {
+                    dataconnexion = new ConnexionBD();
+                    this.Hide();
+                    MainWindow nouvellemainwindow = new MainWindow();
+                    nouvellemainwindow.Show();
+                }
+            } while (dataconnexion.Connexion() == false);
+
+        }
     }
 }
