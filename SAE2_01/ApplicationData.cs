@@ -20,6 +20,7 @@ namespace SAE2_01
     {
 
         private ObservableCollection<Course> lesCourses = new ObservableCollection<Course>();
+        private ObservableCollection<Course> lesCoursesSelect = new ObservableCollection<Course>();
         private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
         public static NpgsqlConnection connexionBD;
         public static Inscription nouvelleInscription;
@@ -37,6 +38,18 @@ namespace SAE2_01
             set
             {
                 this.lesCourses = value;
+            }
+        }
+        public ObservableCollection<Course> LesCoursesSelect
+        {
+            get
+            {
+                return this.lesCoursesSelect;
+            }
+
+            set
+            {
+                this.lesCoursesSelect = value;
             }
         }
         public ObservableCollection<Coureur> LesCoureurs
@@ -124,6 +137,29 @@ namespace SAE2_01
                     res["lien_photo"].ToString(), res["prenom_coureur"].ToString(), res["ville_coureur"].ToString(),
                     res["potable"].ToString(), res["sexe"].ToString(), res["num_licence"].ToString());
                     LesCoureurs.Add(nouveau);
+                }
+                return dataTable.Rows.Count;
+            }
+            catch (NpgsqlException e)
+            { Console.WriteLine("pb de requete : " + e); return 0; }
+        }
+        public int SelectCoureur(int id)
+        {
+            String sql = "SELECT * from course c" +
+                "join inscription i on c.num_course=i.num_course" +
+                "join inscription2 i2 on i.num_inscription=i2.num_inscription" +
+                "where num_coureur = " + id + ";";
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                foreach (DataRow res in dataTable.Rows)
+                {
+                    Course nouveau = new Course(int.Parse(res["num_course"].ToString()), res["nom_course"].ToString(),
+                    float.Parse(res["distance"].ToString()), res["heure_depart"].ToString(), DateTime.Parse(res["date_depart"].ToString()),
+                    float.Parse(res["prix_inscription"].ToString()));
+                    LesCoursesSelect.Add(nouveau);
                 }
                 return dataTable.Rows.Count;
             }
