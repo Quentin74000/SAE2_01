@@ -20,7 +20,7 @@ namespace SAE2_01
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Course courseSelectionnee=null;
+        private Course courseSelectionnee = null;
         public MainWindow()
         {
             bool resultat;
@@ -36,11 +36,13 @@ namespace SAE2_01
                 }
             } while (dataconnexion.Connexion() == false);
             InitializeComponent();
+            Data_Course_Rechercher.Items.Filter = ContientMotClef;
+            Data_Coureur_Rechercher.Items.Filter = ContientMotClefCoureur;
 
         }
         private void But_inscrire_Click(object sender, RoutedEventArgs e)
         {
-            tcGlobal.SelectedItem=Tab_Incription;
+            tcGlobal.SelectedItem = Tab_Incription;
         }
 
         private void tcGlobal_SelectionChanged(object sender, RoutedEventArgs e)
@@ -84,7 +86,9 @@ namespace SAE2_01
             {
                 courseSelectionnee = (Course)Data_Course.SelectedItem;
                 Data_Course.IsEnabled = false;
-                ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course,DateTime.Today);
+                Data_Coureurs.IsEnabled = true;
+                But_Ajouter_Coureur.IsEnabled = true;
+                ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course, DateTime.Today);
             }
             else
                 MessageBox.Show(this, "Veuillez selectionner une course");
@@ -96,11 +100,42 @@ namespace SAE2_01
             {
                 Coureur coureurSelectionne = (Coureur)Data_Coureurs.SelectedItem;
                 Data_Course.IsEnabled = true;
-                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur,TimeOnly.Parse(tbTPS.Text));
+                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur, TimeOnly.Parse(tbTPS.Text));
+                CollectionViewSource.GetDefaultView(Data_Coureurs.ItemsSource).Refresh();
+
             }
             else
                 MessageBox.Show(this, "Veuillez selectionner un coureur");
 
+        }
+
+        private void Lab_Rechercher_Course_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Data_Course_Rechercher.ItemsSource).Refresh();
+
+
+        }
+        private bool ContientMotClef(object obj)
+        {
+            Course uneCourse = obj as Course;
+            if (String.IsNullOrEmpty(Lab_Rechercher_Course.Text))
+                return true;
+            else
+                return (uneCourse.Nom_course.StartsWith(Lab_Rechercher_Course.Text, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private void Lab_Rechercher_Coureur_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Data_Coureur_Rechercher.ItemsSource).Refresh();
+        }
+        private bool ContientMotClefCoureur(object obj)
+        {
+            Coureur unCoureur = obj as Coureur;
+            if (String.IsNullOrEmpty(Lab_Rechercher_Coureur.Text))
+                return true;
+            else
+                return (unCoureur.Nom_coureur.StartsWith(Lab_Rechercher_Coureur.Text, StringComparison.OrdinalIgnoreCase)) ||
+                    (unCoureur.Prenom_coureur.StartsWith(Lab_Rechercher_Coureur.Text, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

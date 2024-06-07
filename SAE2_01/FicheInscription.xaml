@@ -10,6 +10,9 @@
     Height="500"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ApplicationData x:Name="data" />
+    </Window.DataContext>
 
 
     <Window.Resources>
@@ -23,11 +26,6 @@
         <local:GenreCoureurToBool x:Key="convertGenreToBool" />
 
     </Window.Resources>
-
-
-
-
-
     <Grid>
         <Label
             HorizontalAlignment="Center"
@@ -83,17 +81,24 @@
                 Text="{Binding Prenom_coureur, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
                 TextWrapping="Wrap" />
 
-            <Label Content="_Code du club" Target="{Binding ElementName=tbClub}" />
-            <TextBox
-                x:Name="tbClub"
-                Text="{Binding Code_club, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
-                TextWrapping="Wrap" />
+            <Label Content="_Code du club" Target="{Binding ElementName=cbClub}" />
+            <ComboBox x:Name="cbClub" Text="{Binding Code_club, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}">
+                <ComboBoxItem Content="-- Sélectionner un club --" IsSelected="True" />
+                <ComboBoxItem Content="C1" />
+                <ComboBoxItem Content="C2" />
+                <ComboBoxItem Content="C3" />
+                <ComboBoxItem Content="C4" />
+                <ComboBoxItem Content="C5" />
+            </ComboBox>
 
-            <Label Content="N_uméro de la fédération" Target="{Binding ElementName=tbFede}" />
-            <TextBox
-                x:Name="tbFede"
-                Text="{Binding Num_federation, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
-                TextWrapping="Wrap" />
+            <Label Content="N_uméro de la fédération" Target="{Binding ElementName=cbFede}" />
+            <ComboBox x:Name="cbFede" Text="{Binding Num_federation, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}">
+                <ComboBoxItem Content="-- Sélectionner une fédération --" IsSelected="True" />
+                <ComboBoxItem Content="FFA" />
+                <ComboBoxItem Content="FFC" />
+                <ComboBoxItem Content="FFT" />
+                <ComboBoxItem Content="FFG" />
+            </ComboBox>
 
             <Label Content="_Lien de la photo" Target="{Binding ElementName=tbPhoto}" />
             <TextBox

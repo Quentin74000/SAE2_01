@@ -29,7 +29,9 @@ namespace SAE2_01
             String genre = "N";
             if (rbFemme.IsChecked == true) { genre = "F"; }
             else if (rbHomme.IsChecked == true) { genre = "H"; }
-            Coureur newCoureur = new Coureur(tbClub.Text, tbFede.Text, tbNom.Text, tbPhoto.Text,tbPrenom.Text,tbVille.Text,tbTelephone.Text,genre,tbLicence.Text) ;
+            Coureur nouveauCoureur = new Coureur(cbClub.SelectedItem.ToString().Substring(39, 2), cbFede.SelectedItem.ToString().Substring(39, 3), tbNom.Text, tbPhoto.Text, tbPrenom.Text, tbVille.Text, tbTelephone.Text, genre, tbLicence.Text);
+            data.Ajouter_Coureur(nouveauCoureur) ;
+            this.Close();
         }
     }
 }
