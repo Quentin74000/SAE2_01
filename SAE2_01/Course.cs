@@ -7,13 +7,15 @@ namespace SAE2_01
     public class Course : ICloneable
     {
         private int num_course;
+        private string nom_course;
         private float distance;
         private string heure_depart;
         private float prix_inscription;
         
-        public Course(int num_course, float distance, string heure_depart, float prix_inscription)
+        public Course(int num_course,string nom_course, float distance, string heure_depart, float prix_inscription)
         {
             this.Num_course = num_course;
+            this.Nom_course= nom_course;
             this.Distance = distance;
             this.Heure_depart = heure_depart;
             this.Prix_inscription = prix_inscription;
@@ -28,6 +30,18 @@ namespace SAE2_01
             set
             {
                 this.num_course = value;
+            }
+        }
+        public string Nom_course
+        {
+            get
+            {
+                return this.nom_course;
+            }
+
+            set
+            {
+                this.nom_course = value;
             }
         }
 
@@ -72,7 +86,7 @@ namespace SAE2_01
 
         public object Clone()
         {
-            return new Course(this.num_course, this.distance, this.heure_depart, this.prix_inscription);
+            return new Course(this.num_course,this.nom_course, this.distance, this.heure_depart, this.prix_inscription);
         }
 
         public override string? ToString()

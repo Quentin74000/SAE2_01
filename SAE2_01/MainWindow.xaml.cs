@@ -20,6 +20,7 @@ namespace SAE2_01
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Course courseSelectionnee=null;
         public MainWindow()
         {
             bool resultat;
@@ -70,6 +71,36 @@ namespace SAE2_01
         {
             FicheInscription ficheinscription = new FicheInscription();
             ficheinscription.ShowDialog();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void But_Selectionner_course_Click(object sender, RoutedEventArgs e)
+        {
+            if (Data_Course.SelectedItem != null)
+            {
+                courseSelectionnee = (Course)Data_Course.SelectedItem;
+                Data_Course.IsEnabled = false;
+                ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course,DateTime.Today);
+            }
+            else
+                MessageBox.Show(this, "Veuillez selectionner une course");
+        }
+
+        private void But_Ajouter_Coureur_Click(object sender, RoutedEventArgs e)
+        {
+            if (Data_Coureurs.SelectedItem != null)
+            {
+                Coureur coureurSelectionne = (Coureur)Data_Coureurs.SelectedItem;
+                Data_Course.IsEnabled = true;
+                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur,TimeOnly.Parse(tbTPS.Text));
+            }
+            else
+                MessageBox.Show(this, "Veuillez selectionner un coureur");
+
         }
     }
 }

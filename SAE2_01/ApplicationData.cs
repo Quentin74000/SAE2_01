@@ -21,6 +21,9 @@ namespace SAE2_01
         private ObservableCollection<Course> lesCourses = new ObservableCollection<Course>();
         private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
         public static NpgsqlConnection connexionBD;
+        public static Coureur nouveauCoureur;
+        public static Inscription nouvelleInscription;
+        public static Inscription2 nouvelleInscription2;
         private NpgsqlConnection Connexion = connexionBD;   // futur lien à la BD
 
 
@@ -68,7 +71,7 @@ namespace SAE2_01
         }
         public int Read_Course()
         {
-            String sql = "SELECT num_course,  distance,  heure_depart,  prix_inscription from Course";
+            String sql = "SELECT num_course,  nom_course,  distance,  heure_depart,  prix_inscription from Course";
             try
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
@@ -76,7 +79,7 @@ namespace SAE2_01
                 dataAdapter.Fill(dataTable);
                 foreach (DataRow res in dataTable.Rows)
                 {
-                    Course nouveau = new Course(int.Parse(res["num_course"].ToString()), 
+                    Course nouveau = new Course(int.Parse(res["num_course"].ToString()),res["nom_course"].ToString(),
                     float.Parse(res["distance"].ToString()), res["heure_depart"].ToString(), 
                     float.Parse(res["prix_inscription"].ToString()));
                     LesCourses.Add(nouveau);
@@ -97,11 +100,12 @@ namespace SAE2_01
                 foreach (DataRow res in dataTable.Rows)
                 {
                     Coureur nouveau = new Coureur(int.Parse(res["num_coureur"].ToString()), 
-                    res["code_club"].ToString(),int.Parse(res["num_federation"].ToString()), res["nom_coureur"].ToString(),
+                    res["code_club"].ToString(),res["num_federation"].ToString(), res["nom_coureur"].ToString(),
                     res["lien_photo"].ToString(), res["prenom_coureur"].ToString(), res["ville_coureur"].ToString(),
-                    res["portable"].ToString(), res["sexe"].ToString(), res["num_licence"].ToString());
+                    res["potable"].ToString(), res["sexe"].ToString(), res["num_licence"].ToString());
                     LesCoureurs.Add(nouveau);
                 }
+                LesCoureurs.Add(nouveauCoureur);
                 return dataTable.Rows.Count;
             }
             catch (NpgsqlException e)

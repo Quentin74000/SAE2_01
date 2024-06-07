@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Fiche Coureur"
     Width="400"
-    Height="400"
+    Height="500"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
@@ -36,35 +36,115 @@
             FontSize="10"
             Foreground="Gray" />
 
-        <!--<local:PanelCoureur
-            x:Name="UCPanelCoureur"
-            Grid.Column="1"
-            Margin="0,30,0,0"
-            VerticalAlignment="Top"
-            DataContext="{Binding SelectedItem, ElementName=Data_Coureurs}" />-->
         <StackPanel
-            Width="240"
-            Margin="0,0,0,20"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Orientation="Horizontal">
-            <Button
-                x:Name="butValider"
-                Width="100"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content="Valider"
-                IsDefault="True" />
-            <Button
-                x:Name="butAnnuler"
-                Width="100"
-                Margin="40,20,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content="Annuler"
-                IsDefault="True" />
+            x:Name="mainPanel"
+            MinWidth="200"
+            Margin="60,20,60,20">
+            <StackPanel.Resources>
+                <local:GenreCoureurToBool x:Key="convertGenreToBool" />
+            </StackPanel.Resources>
+
+
+            <StackPanel x:Name="panelRadioBouton" Orientation="Horizontal">
+                <RadioButton
+                    x:Name="rbFemme"
+                    Content="Femme"
+                    GroupName="Genre"
+                    IsChecked="{Binding Sexe, UpdateSourceTrigger=Explicit, Converter={StaticResource convertGenreToBool}, ConverterParameter={x:Static local:GenreCoureur.Femme}}" />
+
+                <RadioButton
+                    x:Name="rbHomme"
+                    Margin="10,0,0,0"
+                    Content="Homme"
+                    GroupName="Genre"
+                    IsChecked="{Binding Sexe, UpdateSourceTrigger=Explicit, Converter={StaticResource convertGenreToBool}, ConverterParameter={x:Static local:GenreCoureur.Homme}}" />
+
+                <RadioButton
+                    x:Name="rbNeutre"
+                    Margin="10,0,0,0"
+                    Content="Neutre"
+                    GroupName="Genre"
+                    IsChecked="{Binding Sexe, UpdateSourceTrigger=Explicit, Converter={StaticResource convertGenreToBool}, ConverterParameter={x:Static local:GenreCoureur.Neutre}}" />
+
+            </StackPanel>
+
+
+
+            <Label Content="N_om" Target="{Binding ElementName=tbNom, Mode=OneWay}" />
+            <TextBox
+                x:Name="tbNom"
+                Text="{Binding Nom_coureur, UpdateSourceTrigger=Explicit, Mode=TwoWay, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+
+            <Label Content="_Prenom" Target="{Binding ElementName=tbPrenom}" />
+            <TextBox
+                x:Name="tbPrenom"
+                Text="{Binding Prenom_coureur, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <Label Content="_Code du club" Target="{Binding ElementName=tbClub}" />
+            <TextBox
+                x:Name="tbClub"
+                Text="{Binding Code_club, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <Label Content="N_uméro de la fédération" Target="{Binding ElementName=tbFede}" />
+            <TextBox
+                x:Name="tbFede"
+                Text="{Binding Num_federation, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <Label Content="_Lien de la photo" Target="{Binding ElementName=tbPhoto}" />
+            <TextBox
+                x:Name="tbPhoto"
+                Text="{Binding Lien_photo, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <Label Content="_Ville du coureur" Target="{Binding ElementName=tbVille}" />
+            <TextBox
+                x:Name="tbVille"
+                Text="{Binding Ville_coureur, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <Label Content="_Telephone" Target="{Binding ElementName=tbTelephone}" />
+            <TextBox
+                x:Name="tbTelephone"
+                Text="{Binding Telephone, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <Label Content="Numé_ro de la licence" Target="{Binding ElementName=tbLicence}" />
+            <TextBox
+                x:Name="tbLicence"
+                Text="{Binding Num_licence, UpdateSourceTrigger=Explicit, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
+
+            <StackPanel
+                Width="240"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="butValider"
+                    Width="100"
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="butValider_Click"
+                    Content="Valider"
+                    IsDefault="True" />
+                <Button
+                    x:Name="butAnnuler"
+                    Width="100"
+                    Margin="40,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="Annuler"
+                    IsCancel="True" />
+            </StackPanel>
         </StackPanel>
+
     </Grid>
 
 </Window>

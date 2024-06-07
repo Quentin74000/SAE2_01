@@ -8,6 +8,7 @@
     Title="Accueil"
     Width="1280"
     Height="720"
+    Closed="Window_Closed"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.DataContext>
@@ -129,8 +130,8 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="auto"
-                                    Binding="{Binding Num_course}"
-                                    Header="Numéro de la course" />
+                                    Binding="{Binding Nom_course}"
+                                    Header="Nom de la course" />
                                 <DataGridTextColumn
                                     Width="auto"
                                     Binding="{Binding Distance}"
@@ -151,7 +152,7 @@
                             Width="600"
                             Height="460"
                             Margin="25,0,0,0"
-                            d:ItemsSource="{d:SampleData ItemCount=5}"
+                            d:ItemsSource="{Binding LesCoureurs}"
                             AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
@@ -179,8 +180,15 @@
                             Width="175"
                             Height="30"
                             Margin="25,500,0,0"
+                            Click="But_Selectionner_course_Click"
                             Content="Sélectionner une course"
                             FontSize="16" />
+                        <TextBox
+                            x:Name="tbTPS"
+                            Height="30"
+                            Margin="00,500,0,0"
+                            FontSize="16"
+                            Text="tps" />
                         <Button
                             x:Name="But_Ajouter_Nouveau_Coureur"
                             Height="30"
@@ -193,8 +201,10 @@
                             Width="175"
                             Height="30"
                             Margin="73,500,0,0"
+                            Click="But_Ajouter_Coureur_Click"
                             Content="Valider ce coureur"
                             FontSize="16" />
+
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -222,8 +232,8 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="auto"
-                                Binding="{Binding Num_course}"
-                                Header="Numéro de la course" />
+                                Binding="{Binding Nom_course}"
+                                Header="Nom de la course" />
                             <DataGridTextColumn
                                 Width="auto"
                                 Binding="{Binding Distance}"
@@ -254,9 +264,9 @@
                         Margin="18,33,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        d:ItemsSource="{Binding LesCoureurs}"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True"
-                        ItemsSource="{Binding LesCourses}">
+                        IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="auto"
