@@ -152,8 +152,9 @@
                             Width="600"
                             Height="460"
                             Margin="25,0,0,0"
-                            d:ItemsSource="{Binding LesCoureurs}"
-                            AutoGenerateColumns="False">
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding LesCoureurs}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="80"
@@ -227,7 +228,8 @@
                         Margin="18,10,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Text="Rechercher une course"
+                        Text=""
+                        TextChanged="Lab_Rechercher_Course_TextChanged"
                         TextWrapping="Wrap" />
                     <DataGrid
                         x:Name="Data_Course_Rechercher"
@@ -265,31 +267,36 @@
                         Margin="18,10,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Text="Rechercher un coureur"
-                        TextWrapping="Wrap" />
+                        Text=""
+                        TextChanged="Lab_Rechercher_Coureur_TextChanged"
+                        TextWrapping="Wrap"
+                        ToolTip="Rechercher un coureur" />
                     <DataGrid
-                        x:Name="Data_Coureur"
+                        x:Name="Data_Coureur_Rechercher"
                         Width="auto"
                         Height="300"
                         Margin="18,33,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        d:ItemsSource="{Binding LesCoureurs}"
-                        AutoGenerateColumns="False"
-                        IsReadOnly="True">
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCoureurs}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                                Width="auto"
-                                Binding="{Binding Num_coureur}"
-                                Header="Numéro du coureur" />
+                                Width="80"
+                                Binding="{Binding Nom_coureur}"
+                                Header="Nom" />
                             <DataGridTextColumn
-                                Width="auto"
-                                Binding="{Binding Distance}"
-                                Header="Distance" />
+                                Width="80"
+                                Binding="{Binding Prenom_coureur}"
+                                Header="Prenom" />
                             <DataGridTextColumn
-                                Width="auto"
-                                Binding="{Binding Heure_depart}"
-                                Header="Heure de départ" />
+                                Width="80"
+                                Binding="{Binding Portable}"
+                                Header="Telephone" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Federation}"
+                                Header="Federation" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
