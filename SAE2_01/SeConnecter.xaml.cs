@@ -33,6 +33,7 @@ namespace SAE2_01
 
         private void But_Quitter_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult=true;
             Application.Current.Shutdown();
         }
     }

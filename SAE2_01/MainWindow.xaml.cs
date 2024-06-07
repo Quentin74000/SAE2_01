@@ -36,7 +36,9 @@ namespace SAE2_01
                 }
             } while (dataconnexion.Connexion() == false);
             InitializeComponent();
-            lab_utilisateur.Content = ConnexionBD.LOGIN;
+            Data_Course_Rechercher.Items.Filter = ContientMotClef;
+            lab_Utilisateur.Content = ConnexionBD.LOGIN;
+
         }
         private void But_inscrire_Click(object sender, RoutedEventArgs e)
         {
@@ -103,8 +105,38 @@ namespace SAE2_01
 
         }
 
+        private void Lab_Rechercher_Course_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Data_Course_Rechercher.ItemsSource).Refresh();
+
+
+        }
+        private bool ContientMotClef(object obj)
+        {
+            Course uneCourse= obj as Course;
+            if (String.IsNullOrEmpty(Lab_Rechercher_Course.Text))
+                return true;
+            else
+                return (uneCourse.Nom_course.StartsWith(Lab_Rechercher_Course.Text, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private void Lab_Rechercher_Coureur_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Data_Coureur_Rechercher.ItemsSource).Refresh();
+        }
+        private bool ContientMotClefCoureur(object obj)
+        {
+            Coureur unCoureur = obj as Coureur;
+            if (String.IsNullOrEmpty(Lab_Rechercher_Course.Text))
+                return true;
+            else
+                return (unCoureur.Nom_coureur.StartsWith(Lab_Rechercher_Course.Text, StringComparison.OrdinalIgnoreCase)) || 
+                    (unCoureur.Prenom_coureur.StartsWith(Lab_Rechercher_Coureur.Text, StringComparison.OrdinalIgnoreCase));
+        }
+
         private void But_Deconnecter_Quitter_Click(object sender, RoutedEventArgs e)
         {
+            data.DeconnexionBD();
             Close();
         }
 
@@ -114,10 +146,9 @@ namespace SAE2_01
             bool resultat;
             SeConnecter seConnecter = new SeConnecter();
             ConnexionBD dataconnexion = new ConnexionBD();
-            seConnecter.Close();
             do
             {
-                resultat = (bool)seConnecter.ShowDialog();
+                resultat = (bool)new SeConnecter().ShowDialog();
                 if (resultat == true)
                 {
                     dataconnexion = new ConnexionBD();
@@ -127,6 +158,30 @@ namespace SAE2_01
                 }
             } while (dataconnexion.Connexion() == false);
 
+        }
+
+        private void But_Selectionner_Course_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Data_Course.SelectedItem != null)
+            {
+                courseSelectionnee = (Course)Data_Course.SelectedItem;
+                Data_Course.IsEnabled = false;
+                ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course, DateTime.Today);
+            }
+            else
+                MessageBox.Show(this, "Veuillez selectionner une course");
+        }
+
+        private void But_Selectionner_coureur_Click(object sender, RoutedEventArgs e)
+        {
+            if (Data_Coureur_Rechercher.SelectedItem != null)
+            {
+                Coureur coureurSelectionnee = (Coureur)Data_Coureur_Rechercher.SelectedItem;
+                int numero_coureur = coureurSelectionnee.Num_coureur;
+                data.SelectCoureur(numero_coureur);
+            }
+            else
+                MessageBox.Show(this, "Veuillez selectionner un coureur");
         }
     }
 }

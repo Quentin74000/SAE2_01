@@ -152,8 +152,9 @@
                             Width="600"
                             Height="460"
                             Margin="25,0,0,0"
-                            d:ItemsSource="{Binding LesCoureurs}"
-                            AutoGenerateColumns="False">
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding LesCoureurs}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="80"
@@ -227,7 +228,8 @@
                         Margin="18,10,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Text="Rechercher une course"
+                        Text=""
+                        TextChanged="Lab_Rechercher_Course_TextChanged"
                         TextWrapping="Wrap" />
                     <DataGrid
                         x:Name="Data_Course_Rechercher"
@@ -254,6 +256,41 @@
                                 Header="Heure de départ" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <DataGrid
+                        x:Name="Data_Coureur_Rechercher_Copy"
+                        Width="auto"
+                        Height="198"
+                        Margin="18,354,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCoureurs}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Nom_coureur}"
+                                Header="Nom" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Prenom_coureur}"
+                                Header="Prenom" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Portable}"
+                                Header="Telephone" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Federation}"
+                                Header="Federation" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button
+                        x:Name="But_Selectionner_Course"
+                        Margin="439,130,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="But_Selectionner_Course_Click_1"
+                        Content="Sélectionner une course" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab_Visualiser_Coureur" Header="Coureur">
@@ -265,23 +302,53 @@
                         Margin="18,10,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Text="Rechercher un coureur"
-                        TextWrapping="Wrap" />
+                        Text=""
+                        TextChanged="Lab_Rechercher_Coureur_TextChanged"
+                        TextWrapping="Wrap"
+                        ToolTip="Rechercher un coureur" />
                     <DataGrid
-                        x:Name="Data_Coureur"
+                        x:Name="Data_Coureur_Rechercher"
                         Width="auto"
                         Height="300"
                         Margin="18,33,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        d:ItemsSource="{Binding LesCoureurs}"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCoureurs}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Nom_coureur}"
+                                Header="Nom" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Prenom_coureur}"
+                                Header="Prenom" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Portable}"
+                                Header="Telephone" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Federation}"
+                                Header="Federation" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid
+                        x:Name="Data_Course_Rechercher_Copy"
+                        Width="auto"
+                        Height="186"
+                        Margin="18,366,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True">
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCoursesSelect}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="auto"
-                                Binding="{Binding Num_coureur}"
-                                Header="Numéro du coureur" />
+                                Binding="{Binding Nom_course}"
+                                Header="Nom de la course" />
                             <DataGridTextColumn
                                 Width="auto"
                                 Binding="{Binding Distance}"
@@ -292,6 +359,13 @@
                                 Header="Heure de départ" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button
+                        x:Name="But_Selectionner_coureur"
+                        Margin="491,418,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="But_Selectionner_coureur_Click"
+                        Content="Sélectionner un coureur" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Se_Deconnecter_Quitter" Header="Se déconnecter / Quitter">
@@ -328,6 +402,16 @@
                         x:Name="lab_utilisateur"
                         Height="35"
                         Margin="727,53,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content=""
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White" />
+                    <Label
+                        x:Name="lab_Utilisateur"
+                        Height="35"
+                        Margin="728,51,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Content=""
