@@ -258,6 +258,41 @@
                                 Header="Heure de départ" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <DataGrid
+                        x:Name="Data_Coureur_Rechercher_Copy"
+                        Width="auto"
+                        Height="auto"
+                        Margin="18,354,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCoureurs}" Visibility="Hidden">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Nom_coureur}"
+                                Header="Nom" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Prenom_coureur}"
+                                Header="Prenom" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Portable}"
+                                Header="Telephone" />
+                            <DataGridTextColumn
+                                Width="80"
+                                Binding="{Binding Federation}"
+                                Header="Federation" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button
+                        x:Name="But_Selectionner_Course"
+                        Margin="439,130,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="But_Selectionner_Course_Click_1"
+                        Content="Sélectionner une course" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab_Visualiser_Coureur" Header="Coureur">
@@ -302,6 +337,39 @@
                                 Header="Federation" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <DataGrid
+                        x:Name="Data_Course_Rechercher_Copy"
+                        Width="auto"
+                        Height="auto"
+                        Margin="18,366,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding LesCoursesSelect}"
+                        Visibility="Hidden">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Nom_course}"
+                                Header="Nom de la course" />
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Distance}"
+                                Header="Distance" />
+                            <DataGridTextColumn
+                                Width="auto"
+                                Binding="{Binding Heure_depart}"
+                                Header="Heure de départ" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button
+                        x:Name="But_Selectionner_coureur"
+                        Margin="491,418,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="But_Selectionner_coureur_Click"
+                        Content="Sélectionner un coureur" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Se_Deconnecter_Quitter" Header="Se déconnecter / Quitter">
@@ -335,9 +403,19 @@
                         Content="Changer d'utilisateur"
                         FontSize="16" />
                     <Label
-                        x:Name="lab_utilisateur"
+                        x:Name="lab_user"
                         Height="35"
                         Margin="727,53,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content=""
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White" />
+                    <Label
+                        x:Name="lab_Utilisateur"
+                        Height="35"
+                        Margin="728,51,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Content=""

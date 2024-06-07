@@ -38,7 +38,7 @@ namespace SAE2_01
             InitializeComponent();
             Data_Course_Rechercher.Items.Filter = ContientMotClef;
             Data_Coureur_Rechercher.Items.Filter = ContientMotClefCoureur;
-
+            lab_user.Content = ConnexionBD.LOGIN;
         }
         private void But_inscrire_Click(object sender, RoutedEventArgs e)
         {
@@ -62,10 +62,15 @@ namespace SAE2_01
                 Lab_Nom_Page.Content = string.Empty;
                 Lab_Nom_Page.Content = "Rechercher un coureur";
             }
-            else
+            else if (tcGlobal.SelectedItem == Tab_Visualiser_Course)
             {
                 Lab_Nom_Page.Content = string.Empty;
                 Lab_Nom_Page.Content = "Rechercher une course";
+            }
+            else
+            {
+                Lab_Nom_Page.Content = string.Empty;
+                Lab_Nom_Page.Content = "Se déconnecter / Quitter";
             }
         }
 
@@ -100,7 +105,7 @@ namespace SAE2_01
             {
                 Coureur coureurSelectionne = (Coureur)Data_Coureurs.SelectedItem;
                 Data_Course.IsEnabled = true;
-                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur, TimeOnly.Parse(tbTPS.Text));
+                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur, TimeOnly.Parse(tb_TPS.Text));
                 CollectionViewSource.GetDefaultView(Data_Coureurs.ItemsSource).Refresh();
 
             }
@@ -140,6 +145,7 @@ namespace SAE2_01
 
         private void But_Deconnecter_Quitter_Click(object sender, RoutedEventArgs e)
         {
+            data.DeconnexionBD();
             Close();
         }
 
@@ -149,10 +155,9 @@ namespace SAE2_01
             bool resultat;
             SeConnecter seConnecter = new SeConnecter();
             ConnexionBD dataconnexion = new ConnexionBD();
-            seConnecter.Close();
             do
             {
-                resultat = (bool)seConnecter.ShowDialog();
+                resultat = (bool)new SeConnecter().ShowDialog();
                 if (resultat == true)
                 {
                     dataconnexion = new ConnexionBD();
@@ -162,6 +167,32 @@ namespace SAE2_01
                 }
             } while (dataconnexion.Connexion() == false);
 
+        }
+
+        private void But_Selectionner_Course_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Data_Course.SelectedItem != null)
+            {
+                courseSelectionnee = (Course)Data_Course_Rechercher.SelectedItem;
+                Data_Course_Rechercher.IsEnabled = false;
+                ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course, DateTime.Today);
+                Data_Coureur_Rechercher_Copy.Visibility = Visibility.Visible;
+            }
+            else
+                MessageBox.Show(this, "Veuillez selectionner une course");
+        }
+
+        private void But_Selectionner_coureur_Click(object sender, RoutedEventArgs e)
+        {
+            if (Data_Coureur_Rechercher.SelectedItem != null)
+            {
+                Coureur coureurSelectionnee = (Coureur)Data_Coureur_Rechercher.SelectedItem;
+                int numero_coureur = coureurSelectionnee.Num_coureur;
+                data.SelectCoureur(numero_coureur);
+                Data_Course_Rechercher_Copy.Visibility = Visibility.Visible;
+            }
+            else
+                MessageBox.Show(this, "Veuillez selectionner un coureur");
         }
     }
 }
