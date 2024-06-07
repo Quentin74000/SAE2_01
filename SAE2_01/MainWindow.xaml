@@ -9,7 +9,7 @@
     Width="1280"
     Height="720"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Closed="Window_Closed">
     <Window.DataContext>
         <local:ApplicationData x:Name="data" />
     </Window.DataContext>
@@ -129,8 +129,8 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Width="auto"
-                                    Binding="{Binding Num_course}"
-                                    Header="Numéro de la course" />
+                                    Binding="{Binding Nom_course}"
+                                    Header="Nom de la course" />
                                 <DataGridTextColumn
                                     Width="auto"
                                     Binding="{Binding Distance}"
@@ -222,8 +222,8 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="auto"
-                                Binding="{Binding Num_course}"
-                                Header="Numéro de la course" />
+                                Binding="{Binding Nom_course}"
+                                Header="Nom de la course" />
                             <DataGridTextColumn
                                 Width="auto"
                                 Binding="{Binding Distance}"

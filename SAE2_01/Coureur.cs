@@ -6,11 +6,12 @@ using System.Windows.Media.Animation;
 
 namespace SAE2_01
 {
+    public enum GenreCoureur { Neutre = 'N', Homme = 'H', Femme = 'F' };
     public class Coureur : ICloneable
     {
         private int num_coureur;
         private string code_club;
-        private int num_federation;
+        private string num_federation;
         private string nom_coureur;
         private string lien_photo;
         private string prenom_coureur;
@@ -20,7 +21,7 @@ namespace SAE2_01
         private string num_licence;
 
 
-        public Coureur(string code_club, int num_federation, string nom_coureur, string lien_photo, string prenom_coureur, string ville_coureur, string portable, string sexe, string num_licence)
+        public Coureur(string code_club, string num_federation, string nom_coureur, string lien_photo, string prenom_coureur, string ville_coureur, string portable, string sexe, string num_licence)
         {
             this.Code_club = code_club;
             this.Num_federation = num_federation;
@@ -32,7 +33,7 @@ namespace SAE2_01
             this.Sexe = sexe;
             this.Num_licence = num_licence;
         }
-        public Coureur(int numcoureur, string code_club, int num_federation, string nom_coureur, string lien_photo, string prenom_coureur, string ville_coureur, string portable, string sexe, string num_licence)
+        public Coureur(int numcoureur, string code_club, string num_federation, string nom_coureur, string lien_photo, string prenom_coureur, string ville_coureur, string portable, string sexe, string num_licence)
             : this(code_club, num_federation, nom_coureur, lien_photo, prenom_coureur, ville_coureur, portable, sexe, num_licence)
         {
             this.Num_coureur = num_coureur;
@@ -64,7 +65,7 @@ namespace SAE2_01
             }
         }
 
-        public int Num_federation
+        public string Num_federation
         {
             get
             {

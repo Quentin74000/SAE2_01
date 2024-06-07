@@ -71,5 +71,10 @@ namespace SAE2_01
             FicheInscription ficheinscription = new FicheInscription();
             ficheinscription.ShowDialog();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
