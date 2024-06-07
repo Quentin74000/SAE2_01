@@ -10,14 +10,16 @@ namespace SAE2_01
         private string nom_course;
         private float distance;
         private string heure_depart;
+        private DateTime date_depart;
         private float prix_inscription;
         
-        public Course(int num_course,string nom_course, float distance, string heure_depart, float prix_inscription)
+        public Course(int num_course,string nom_course, float distance, string heure_depart, DateTime date_depart, float prix_inscription)
         {
             this.Num_course = num_course;
             this.Nom_course= nom_course;
             this.Distance = distance;
             this.Heure_depart = heure_depart;
+            this.Date_depart = date_depart;
             this.Prix_inscription = prix_inscription;
         }
         public int Num_course
@@ -84,14 +86,27 @@ namespace SAE2_01
             }
         }
 
+        public DateTime Date_depart
+        {
+            get
+            {
+                return this.date_depart;
+            }
+
+            set
+            {
+                this.date_depart = value;
+            }
+        }
+
         public object Clone()
         {
-            return new Course(this.num_course,this.nom_course, this.distance, this.heure_depart, this.prix_inscription);
+            return new Course(this.num_course,this.nom_course, this.distance, this.heure_depart,this.date_depart, this.prix_inscription);
         }
 
         public override string? ToString()
         {
-            return Num_course + " " + Distance + " " + heure_depart + " " + Prix_inscription;
+            return Num_course + " " + Distance + " " + Heure_depart + " " + Date_depart + " " + Prix_inscription;
         }
 
     }

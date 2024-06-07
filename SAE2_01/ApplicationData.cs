@@ -71,7 +71,7 @@ namespace SAE2_01
         }
         public int Read_Course()
         {
-            String sql = "SELECT num_course,  nom_course,  distance,  heure_depart,  prix_inscription from Course";
+            String sql = "SELECT num_course,  nom_course,  distance,  heure_depart, date_depart,  prix_inscription from Course";
             try
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
@@ -80,7 +80,7 @@ namespace SAE2_01
                 foreach (DataRow res in dataTable.Rows)
                 {
                     Course nouveau = new Course(int.Parse(res["num_course"].ToString()),res["nom_course"].ToString(),
-                    float.Parse(res["distance"].ToString()), res["heure_depart"].ToString(), 
+                    float.Parse(res["distance"].ToString()), res["heure_depart"].ToString(), DateTime.Parse(res["date_depart"].ToString()),
                     float.Parse(res["prix_inscription"].ToString()));
                     LesCourses.Add(nouveau);
                 }

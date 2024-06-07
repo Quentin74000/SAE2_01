@@ -10,15 +10,15 @@ namespace SAE2_01
     {
         private int num_inscription;
         private int num_course;
-        private DateTime date_depart;
+        private DateTime date_inscription;
         public Inscription() { }
-        public Inscription(int num_course, DateTime date_depart)
+        public Inscription(int num_course, DateTime date_inscription)
         {
             this.Num_course = num_course;
-            this.Date_depart = date_depart;
+            this.Date_inscription = date_inscription;
         }
-        public Inscription(int num_inscription, int num_course, DateTime date_depart)
-            :this(num_course,date_depart)
+        public Inscription(int num_inscription, int num_course, DateTime date_inscription)
+            :this(num_course, date_inscription)
         {
             this.Num_inscription = num_inscription;
         }
@@ -49,26 +49,26 @@ namespace SAE2_01
             }
         }
 
-        public DateTime Date_depart
+        public DateTime Date_inscription
         {
             get
             {
-                return this.date_depart;
+                return this.date_inscription;
             }
 
             set
             {
-                this.date_depart = value;
+                this.date_inscription = value;
             }
         }
         public object Clone()
         {
-            return new Inscription(this.num_inscription, this.num_course, this.date_depart);
+            return new Inscription(this.num_inscription, this.num_course, this.date_inscription);
         }
 
         public override string? ToString()
         {
-            return Num_inscription + " " + Num_course + " " + Date_depart;
+            return Num_inscription + " " + Num_course + " " + Date_inscription;
         }
     }
 }

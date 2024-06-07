@@ -270,8 +270,8 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="auto"
-                                Binding="{Binding Num_course}"
-                                Header="Numéro de la course" />
+                                Binding="{Binding Num_coureur}"
+                                Header="Numéro du coureur" />
                             <DataGridTextColumn
                                 Width="auto"
                                 Binding="{Binding Distance}"
