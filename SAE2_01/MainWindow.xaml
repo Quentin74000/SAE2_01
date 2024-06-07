@@ -288,7 +288,7 @@
                     </DataGrid>
                     <Button
                         x:Name="But_Selectionner_Course"
-                        Margin="439,130,0,0"
+                        Margin="170,9,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Click="But_Selectionner_Course_Click_1"
@@ -365,7 +365,7 @@
                     </DataGrid>
                     <Button
                         x:Name="But_Selectionner_coureur"
-                        Margin="491,418,0,0"
+                        Margin="179,9,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Click="But_Selectionner_coureur_Click"
