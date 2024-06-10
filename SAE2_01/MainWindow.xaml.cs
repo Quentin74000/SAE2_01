@@ -94,6 +94,7 @@ namespace SAE2_01
                 Data_Coureurs.IsEnabled = true;
                 But_Ajouter_Coureur.IsEnabled = true;
                 ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course, DateTime.Today);
+                data.InsertInscription();
             }
             else
                 MessageBox.Show(this, "Veuillez selectionner une course");
@@ -105,8 +106,9 @@ namespace SAE2_01
             {
                 Coureur coureurSelectionne = (Coureur)Data_Coureurs.SelectedItem;
                 Data_Course.IsEnabled = true;
-                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.nouvelleInscription.Num_inscription, coureurSelectionne.Num_coureur, TimeOnly.Parse(tb_TPS.Text));
+                ApplicationData.nouvelleInscription2 = new Inscription2(ApplicationData.NumNouvelleInscription, coureurSelectionne.Num_coureur, TimeOnly.Parse(tb_TPS.Text));
                 CollectionViewSource.GetDefaultView(Data_Coureurs.ItemsSource).Refresh();
+                data.InsertInscription2();
 
             }
             else
@@ -171,11 +173,11 @@ namespace SAE2_01
 
         private void But_Selectionner_Course_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Data_Course.SelectedItem != null)
+            if (Data_Course_Rechercher.SelectedItem != null)
             {
-                courseSelectionnee = (Course)Data_Course_Rechercher.SelectedItem;
-                Data_Course_Rechercher.IsEnabled = false;
-                ApplicationData.nouvelleInscription = new Inscription(courseSelectionnee.Num_course, DateTime.Today);
+                Course courseSelectionnee = (Course)Data_Course_Rechercher.SelectedItem;
+                int numero_course = courseSelectionnee.Num_course;
+                data.SelectCourse(numero_course);
                 Data_Coureur_Rechercher_Copy.Visibility = Visibility.Visible;
             }
             else
@@ -193,6 +195,11 @@ namespace SAE2_01
             }
             else
                 MessageBox.Show(this, "Veuillez selectionner un coureur");
+        }
+
+        private void But_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            data.Read_Coureur();
         }
     }
 }

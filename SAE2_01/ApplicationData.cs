@@ -22,8 +22,10 @@ namespace SAE2_01
         private ObservableCollection<Course> lesCourses = new ObservableCollection<Course>();
         private ObservableCollection<Course> lesCoursesSelect = new ObservableCollection<Course>();
         private ObservableCollection<Coureur> lesCoureurs = new ObservableCollection<Coureur>();
+        private ObservableCollection<Coureur> lesCoureurSelect = new ObservableCollection<Coureur>();
         public static NpgsqlConnection connexionBD;
         public static Inscription nouvelleInscription;
+        public static int NumNouvelleInscription;
         public static Inscription2 nouvelleInscription2;
         private NpgsqlConnection Connexion = connexionBD;   // futur lien à la BD
 
@@ -62,6 +64,18 @@ namespace SAE2_01
             set
             {
                 this.lesCoureurs = value;
+            }
+        }
+        public ObservableCollection<Coureur> LesCoureurSelect
+        {
+            get
+            {
+                return this.lesCoureurSelect;
+            }
+
+            set
+            {
+                this.lesCoureurSelect = value;
             }
         }
 
@@ -107,6 +121,7 @@ namespace SAE2_01
             String sql = "SELECT num_course,  nom_course,  distance,  heure_depart, date_depart,  prix_inscription from Course";
             try
             {
+                LesCourses.Clear();
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -127,6 +142,7 @@ namespace SAE2_01
             String sql = "SELECT num_coureur, code_club, num_federation, nom_coureur, lien_photo, prenom_coureur, ville_coureur, potable, sexe, num_licence from Coureur";
             try
             {
+                lesCoureurs.Clear();
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -145,12 +161,13 @@ namespace SAE2_01
         }
         public int SelectCoureur(int id)
         {
-            String sql = "SELECT * from course c" +
-                "join inscription i on c.num_course=i.num_course" +
-                "join inscription2 i2 on i.num_inscription=i2.num_inscription" +
+            String sql = "SELECT * from course c " +
+                "join inscription i on c.num_course=i.num_course " +
+                "join inscription2 i2 on i.num_inscription=i2.num_inscription " +
                 "where num_coureur = " + id + ";";
             try
             {
+                LesCoursesSelect.Clear();
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -166,62 +183,79 @@ namespace SAE2_01
             catch (NpgsqlException e)
             { Console.WriteLine("pb de requete : " + e); return 0; }
         }
-        //public int Create(Course c)
-        //{
-        //    String sql = $"insert into course (nom,prenom,email,genre,telephone, dateNaissance)"
-        //    + $" values ('{c.Nom}','{c.Prenom}','{c.Email}'"
-        //    + $",'{(char)c.Genre}','{c.Telephone}', "
-        //    + $"'{c.DateNaissance.Year}-{c.DateNaissance.Month}-{c.DateNaissance.Day}'); ";
-        //    try
-        //    {
-        //        NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
-        //        int nb = cmd.ExecuteNonQuery();
-        //        return nb;
-        //        //nb permet de connaître le nb de lignes affectées par un insert, update, delete
-        //    }
-        //    catch (Exception sqlE)
-        //    {
-        //        MessageBox.Show("pb de requete : " + sql + "" + sqlE, "Pb requête", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        // juste pour le debug : à transformer en MsgBox 
-        //        return 0;
-        //    }
-        //}
-        //public int Delete(Client c)
-        //{
-        //    String sql = $"delete from Client where id = '{c.Id}'";
-        //    try
-        //    {
-        //        NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
-        //        int nb = cmd.ExecuteNonQuery();
-        //        return nb;
-        //        //nb permet de connaître le nb de lignes affectées par un insert, update, delete
-        //    }
-        //    catch (Exception sqlE)
-        //    {
-        //        MessageBox.Show("pb de requete : " + sql + "" + sqlE, "Pb requête", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        // juste pour le debug : à transformer en MsgBox 
-        //        return 0;
-        //    }
-        //}
-        //public int Update(Client c)
-        //{
-        //    String sql = $"Update client set nom = '{c.Nom}',prenom = '{c.Prenom}'" +
-        //        $",email = '{c.Email}',genre = '{(char)c.Genre}',telephone = '{c.Telephone}'" +
-        //        $", dateNaissance = '{c.DateNaissance.Year}-{c.DateNaissance.Month}-{c.DateNaissance.Day}' where id = '{c.Id}'";
-        //    try
-        //    {
-        //        NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
-        //        int nb = cmd.ExecuteNonQuery();
-        //        return nb;
-        //        //nb permet de connaître le nb de lignes affectées par un insert, update, delete
-        //    }
-        //    catch (Exception sqlE)
-        //    {
-        //        MessageBox.Show("pb de requete : " + sql + "" + sqlE, "Pb requête", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        // juste pour le debug : à transformer en MsgBox 
-        //        return 0;
-        //    }
-        //}
+        public void InsertInscription()
+        {
+
+            String sql = $"insert into Inscription (num_course, date_inscription)"
+        + $" values ({nouvelleInscription.Num_course} , '{nouvelleInscription.Date_inscription}'); ";
+            try
+            {
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
+                int nb = cmd.ExecuteNonQuery();
+                MaxInscription();
+            }
+            catch (Exception sqlE)
+            {
+                MessageBox.Show("pb de requete : " + sql + "" + sqlE, "Pb requête", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        public void InsertInscription2()
+        {
+
+            String sql = $"insert into Inscription2 (num_inscription, num_coureur, temps_prevu)"
+        + $" values ({nouvelleInscription2.Num_inscription} , {nouvelleInscription2.Num_coureur}, '{nouvelleInscription2.Temps_prevu}'); ";
+            try
+            {
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, Connexion);
+                int nb = cmd.ExecuteNonQuery();
+            }
+            catch (Exception sqlE)
+            {
+                MessageBox.Show("pb de requete : " + sql + "" + sqlE, "Pb requête", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        public int SelectCourse(int id)
+        {
+            String sql = "SELECT * from coureur c " +
+                         "join inscription2 i2 on c.num_coureur=i2.num_coureur " +
+                         "join inscription i on i2.num_inscription=i.num_inscription " +
+                         "where num_course = " + id + ";";
+            try
+            {
+                LesCoureurSelect.Clear();
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                foreach (DataRow res in dataTable.Rows)
+                {
+                    Coureur nouveau = new Coureur(int.Parse(res["num_coureur"].ToString()), res["code_club"].ToString(),
+                    res["num_federation"].ToString(), res["nom_coureur"].ToString(), res["lien_photo"].ToString(),
+                    res["prenom_coureur"].ToString(), res["ville_coureur"].ToString(), res["potable"].ToString(), res["sexe"].ToString(), res["num_licence"].ToString());
+                    LesCoureurSelect.Add(nouveau);
+                }
+                return dataTable.Rows.Count;
+            }
+            catch (NpgsqlException e)
+            { Console.WriteLine("pb de requete : " + e); return 0; }
+        }
+        public int MaxInscription()
+        {
+            String sql = "select max(num_inscription)\"Maximum\" from inscription;";
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(sql, Connexion);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                foreach (DataRow res in dataTable.Rows)
+                {
+                    NumNouvelleInscription = int.Parse(res["Maximum"].ToString());
+                }
+                return dataTable.Rows.Count;
+            }
+            catch (NpgsqlException e)
+            { Console.WriteLine("pb de requete : " + e); return 0; }
+        }
+        
 
     }
 

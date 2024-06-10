@@ -212,13 +212,22 @@
 
                     </StackPanel>
                     <Label
-                        Margin="382,515,0,0"
+                        Margin="297,515,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Content="Temps prévu :"
+                        Content="Temps prévu (en heure) :"
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="White" />
+                    <Button
+                        x:Name="But_refresh"
+                        Width="175"
+                        Height="30"
+                        Margin="1099,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="But_refresh_Click"
+                        Content="Rafraîchir les données" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab_Visualiser_Course" Header="Course">
@@ -262,11 +271,12 @@
                         x:Name="Data_Coureur_Rechercher_Copy"
                         Width="auto"
                         Height="auto"
-                        Margin="18,354,0,0"
+                        Margin="18,192,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         IsReadOnly="True"
-                        ItemsSource="{Binding LesCoureurs}" Visibility="Hidden">
+                        ItemsSource="{Binding LesCoureurSelect}"
+                        Visibility="Hidden">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="80"

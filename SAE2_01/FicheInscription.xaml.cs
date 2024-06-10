@@ -26,12 +26,38 @@ namespace SAE2_01
 
         private void butValider_Click(object sender, RoutedEventArgs e)
         {
-            String genre = "N";
-            if (rbFemme.IsChecked == true) { genre = "F"; }
-            else if (rbHomme.IsChecked == true) { genre = "H"; }
-            Coureur nouveauCoureur = new Coureur(cbClub.SelectedItem.ToString().Substring(39, 2), cbFede.SelectedItem.ToString().Substring(39, 3), tbNom.Text, tbPhoto.Text, tbPrenom.Text, tbVille.Text, tbTelephone.Text, genre, tbLicence.Text);
-            data.Ajouter_Coureur(nouveauCoureur) ;
-            this.Close();
+
+            bool ok = true;
+            foreach (UIElement uie in mainPanel.Children)
+            {
+                if (uie is TextBox)
+                {
+                    TextBox txt = (TextBox)uie;
+                    txt.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+
+                if (Validation.GetHasError(uie))
+                    ok = false;
+            }
+            foreach (UIElement uie in panelRadioBouton.Children)
+            {
+                RadioButton rb = (RadioButton)uie;
+                rb.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
+                if (Validation.GetHasError(uie))
+                    ok = false;
+            }
+            if (ok)
+            {
+                String genre = "N";
+                if (rbFemme.IsChecked == true) { genre = "F"; }
+                else if (rbHomme.IsChecked == true) { genre = "H"; }
+                Coureur nouveauCoureur = new Coureur(cbClub.SelectedItem.ToString().Substring(39, 2), cbFede.SelectedItem.ToString().Substring(39, 3), tbNom.Text, tbPhoto.Text, tbPrenom.Text, tbVille.Text, tbTelephone.Text, genre, tbLicence.Text);
+                data.Ajouter_Coureur(nouveauCoureur);
+                this.Close();
+            }
+            else
+                MessageBox.Show(this, "Erreur", "Vérifiez vos informations.", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
+
 }

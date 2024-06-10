@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SAE2_01.ApplicationData">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAACAAAAAAAAIACAAAQQAhAAAEAAgCoCAAQQEAAoAI=</HashCode>
+      <FileName>ApplicationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE2_01.ConnexionBD">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAACAAAAAAAAAAAAAACAAAAAgAAAAAA=</HashCode>
+      <FileName>ConnexionBD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE2_01.Coureur">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAoAAEAIAAAIAiEACAwAAAIMAAAgAgAAYAAAAAICJA=</HashCode>
+      <FileName>Coureur.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SAE2_01.Course">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAAABQIAAAAIAEAEAEAAAAIEAAAABAAAAAAAAAgBA=</HashCode>
+      <FileName>Course.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SAE2_01.FicheInscription">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FicheInscription.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SAE2_01.GenreCoureurToBool">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GenreCoureurToBool.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SAE2_01.Inscription">
+    <Position X="2" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAQAAAAIAEAAAAAAAAAAAABAAAAQAAAAAAgBA=</HashCode>
+      <FileName>Inscription.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SAE2_01.Inscription2">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAIAAAACgEAAAAAAAAAAAAAAgAAQAAAAAAABA=</HashCode>
+      <FileName>Inscription2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SAE2_01.MainWindow">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAABAAQIAAEABCAAAQQAggAAAAACAAAAEABABAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="SAE2_01.GenreCoureur">
+    <Position X="5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAgAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Coureur.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

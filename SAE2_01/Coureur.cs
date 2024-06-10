@@ -36,7 +36,7 @@ namespace SAE2_01
         public Coureur(int numcoureur, string code_club, string num_federation, string nom_coureur, string lien_photo, string prenom_coureur, string ville_coureur, string portable, string sexe, string num_licence)
             : this(code_club, num_federation, nom_coureur, lien_photo, prenom_coureur, ville_coureur, portable, sexe, num_licence)
         {
-            this.Num_coureur = num_coureur;
+            this.Num_coureur = numcoureur;
         }
 
         public int Num_coureur
@@ -61,6 +61,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length > 2) { throw new ArgumentOutOfRangeException("Le code du club doit être composé de deux caractères maximum"); };
                 code_club = value;
             }
         }
@@ -74,6 +75,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length > 3) { throw new ArgumentOutOfRangeException("Le numéro de la fédération doit être composé de trois caractères maximum"); };
                 num_federation = value;
             }
         }
@@ -87,6 +89,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length>50) { throw new ArgumentOutOfRangeException("Le nom du coureur ne doit pas dépaser les 50 caractères"); };
                 nom_coureur = value;
             }
         }
@@ -100,6 +103,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length > 100) { throw new ArgumentOutOfRangeException("Le lien de la photo ne doit pas dépaser les 100 caractères"); };
                 lien_photo = value;
             }
         }
@@ -113,6 +117,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length > 50) { throw new ArgumentOutOfRangeException("Le prénom du coureur ne doit pas dépaser les 50 caractères"); };
                 prenom_coureur = value;
             }
         }
@@ -126,6 +131,7 @@ namespace SAE2_01
 
             set
             {
+                if ( value.Length > 50) { throw new ArgumentOutOfRangeException("Le nom de la ville ne doit pas dépaser les 50 caractères"); };
                 ville_coureur = value;
             }
         }
@@ -139,6 +145,8 @@ namespace SAE2_01
 
             set
             {
+                if (!Regex.IsMatch(value, "^[0-9]{10}$"))
+                    throw new ArgumentException("Le format du tel n'est pas correct. 10 chiffres attendus.");
                 portable = value;
             }
         }
@@ -152,6 +160,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length > 1) { throw new ArgumentOutOfRangeException("Le sexe du coureur doit être composé d'un caractère maximum"); };
                 sexe = value;
             }
         }
@@ -165,6 +174,7 @@ namespace SAE2_01
 
             set
             {
+                if (value.Length > 10) { throw new ArgumentOutOfRangeException("Le numéro de licence doit être composé de deux caractères maximum"); };
                 this.num_licence = value;
             }
         }
